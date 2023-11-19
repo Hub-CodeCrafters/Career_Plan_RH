@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 
 import "../assets/admin.css"
 
 import {
   DndContext,
   closestCenter,
-  closestCorners,
-  DragOverlay
+  DragOverlay,
 } from "@dnd-kit/core";
 
 import {
@@ -20,10 +20,16 @@ import Perfil from "../components/Perfil"
 import Columns from "../components/Columns"
 import { createPortal } from 'react-dom';
 
+// data
+
+import Perfiles from "../data/perfiles"
+import Setting from '../components/Setting';
+
+
 function Admin() {
 
 
-const [columns, setColums] = useState([
+  const [columns, setColums] = useState([
     { id: 1, name: 'coluna 1' },
     { id: 2, name: 'coluna 2' },
     { id: 3, name: 'coluna 3' },
@@ -37,158 +43,111 @@ const [columns, setColums] = useState([
     { id: 11, name: 'coluna 11' },
     { id: 12, name: 'coluna 12' }
   ]);
+  const [currentProfiles, setCurrentPerfiles] = useState(Perfiles);
 
+  const [profileActive, setProfileActive] = useState("")
 
-  const [perfiles, setPerfiles] = useState([
-    [
-        { id: 66, column:1,  name: 'perfil 1' },
-        { id: 267,column:1 , name: 'perfil 2' },
-        { id: 367,column:3,  name: 'perfil 3' }
-    ],
-    [
-        { id: 456, column: 2, name: 'perfil 4' },
-        { id: 576, column: 2, name: 'perfil 5' },
-        { id: 676, column: 2, name: 'perfil 6' }
-    ],
-    [
-        { id: 7676, column: 3, name: 'perfil 6' },
-        { id: 88, column: 3, name: 'perfil 7' },
-        { id: 98, column: 3, name: 'perfil 68' }
-    ],
-    [
-        { id: 109, column: 4, name: 'perfil 6' },
-        { id: 191, column: 4, name: 'perfil 7d' },
-        { id: 192, column: 4, name: 'perfil 68' }
-    ],
-    [
-        { id: 13, column: 5, name: 'perfil 6f' },
-        { id: 14, column: 5, name: 'perfil 7f' },
-        { id: 15, column: 5, name: 'perfil 68' }
-    ],
-    [
-        { id: 16, column: 6, name: 'perfil 6e' },
-        { id: 17, column: 6, name: 'perfil 7' },
-        { id: 18, column: 6, name: 'perfil 68' }
-    ],
-    [
-        { id: 19, column: 7, name: 'perfil 65' },
-        { id: 20, column: 7, name: 'perfil 7' },
-        { id: 21, column: 7, name: 'perfil 68' }
-    ],
-    [
-        { id: 22, column: 8, name: 'perfil 6' },
-        { id: 23, column: 8, name: 'perfil 7' },
-        { id: 24, column: 8, name: 'perfil 68' }
-    ],
-    [
-        { id: 25, column: 9, name: 'perfil 6' },
-        { id: 26, column: 9, name: 'perfil 7' },
-        { id: 27, column: 9, name: 'perfil 68' }
-    ],
-    [
-        { id: 28, column: 10, name: 'perfil 6' },
-        { id: 29, column: 10, name: 'perfil 7' },
-        { id: 30, column: 10, name: 'perfil 68' }
-    ],
-    [
-        { id: 31, column: 11, name: 'perfil 6' },
-        { id: 32, column: 11, name: 'perfil 7' },
-        { id: 33, column: 11, name: 'perfil 68' }
-    ],
-    [
-        { id: 34, column: 12, name: 'perfil 6' },
-        { id: 35, column: 12, name: 'perfil 7' },
-        { id: 36, column: 12, name: 'perfil 68' }
-    ],
-  
-
-]);
  
 
 
 
-//   const { active, over } = event;
 
-//   // condicion para pasar elementos de una coluna a otra
-
-
-//   if (active && over && active.data.current.type === 'perfil' && over.data.current.type === 'perfil' && active.id !== over.id) {
-//     // sacamos los id activos y los id de destino
-//     const profileId = active.id;
-//     const destinationProfileId = over.id;
-
-//     const updatedPerfiles = perfiles.map((perfil) => {
-//       // Encuentra la columna que contiene el perfil activo y destino
-//       const activeProfileIndex = perfil.findIndex((profile) => profile.id === profileId);
-//       const destinationProfileIndex = perfil.findIndex((profile) => profile.id === destinationProfileId);
-
-//       if (activeProfileIndex !== -1 && destinationProfileIndex !== -1) {
-//         // Realiza el intercambio dentro de la misma perfil
-//         const updatedColumn = [...perfil];
-//         const [movedProfile] = updatedColumn.splice(activeProfileIndex, 1);
-//         updatedColumn.splice(destinationProfileIndex, 0, movedProfile);
-
-//         return updatedColumn;
-//       }
-
-//       return perfil;
-//     });
-
-//     setPerfiles(updatedPerfiles);
-//   }
-
-
-// };
-
-const handleDragEnd = (event) => {
-  const { active, over } = event;
-
-  if (active && over && active.data.current.type === 'perfil' && over.data.current.type === 'perfil' && active.id !== over.id) {
-    const profileId = active.id;
-    const destinationProfileId = over.id;
-    const sourceColumnIndex = perfiles.findIndex((column) => column.some((profile) => profile.id === profileId));
-    const destinationColumnIndex = perfiles.findIndex((column) => column.some((profile) => profile.id === destinationProfileId));
-
-    const updatedPerfiles = [...perfiles];
-
-    if (sourceColumnIndex !== -1 && destinationColumnIndex !== -1) {
-      if (over.data.current.column !== active.data.current.column) {
-        // Mover el perfil a otra columna diferente
-        const movedProfileIndex = updatedPerfiles[sourceColumnIndex].findIndex((profile) => profile.id === profileId);
-        const movedProfile = updatedPerfiles[sourceColumnIndex][movedProfileIndex];
-        updatedPerfiles[sourceColumnIndex].splice(movedProfileIndex, 1);
-        updatedPerfiles[destinationColumnIndex].push(movedProfile);
-      } else {
-        // Mover el perfil dentro de la misma columna
-        const sourceProfileIndex = updatedPerfiles[sourceColumnIndex].findIndex((profile) => profile.id === profileId);
-        const destinationProfileIndex = updatedPerfiles[destinationColumnIndex].findIndex((profile) => profile.id === destinationProfileId);
-        const [movedProfile] = updatedPerfiles[sourceColumnIndex].splice(sourceProfileIndex, 1);
-        updatedPerfiles[destinationColumnIndex].splice(destinationProfileIndex, 0, movedProfile);
+  // funcion que cambia el perfil la pocicion de un perfil  siempre y cuando hallan perfiles 
+  const handleDragEnd = (event) => {
+    // sacamos los atributos de los perfiles activos y los de destino
+    const { active, over } = event;
+    if (active && over && active.data.current.type === 'perfil' && over.data.current.type === 'perfil' && active.id !== over.id) {
+      // sacamos los id activos y los id de destino
+      const profileId = active.id;
+      const destinationProfileId = over.id;
+      // esto recorre la coluna y despues recorre los perfiles  dentro de la coluna par aver si encuentra alguna coincidencia y retorna el indice del la coluna donde esta el perfil  o -1
+      const indexProfilId = currentProfiles.findIndex((column) => column.some((profile) => profile.id === profileId));
+      const indexDestinationProfileId = currentProfiles.findIndex((column) => column.some((profile) => profile.id === destinationProfileId));
+      // creamos una copia de los perfiles 
+      const updatedPerfiles = [...currentProfiles];
+      // si encontro el indece del perfil activo y el de destino entramo al if para actaulizar la información
+      if (indexProfilId !== -1 && indexDestinationProfileId !== -1) {
+        //  entramoas a la coluna y buscamos el perfil  activoy guardamos los resultados en source profile index
+        const ProfileIndex = updatedPerfiles[indexProfilId].findIndex((profile) => profile.id === profileId);
+        // aca entramos ala coluna de destino donde queremos mover el perfil y buscarmos si esta el perfil hay 
+        const destinationProfileIndex = updatedPerfiles[indexDestinationProfileId].findIndex((profile) => profile.id === destinationProfileId);
+        // aca removemos el perfil de la coluna  y lo guardamos en un array
+        const [movedProfile] = updatedPerfiles[indexProfilId].splice(ProfileIndex, 1);
+        // aca agregamos el perfil en la coluna de destino en el indice que encontramos
+        updatedPerfiles[indexDestinationProfileId ].splice(destinationProfileIndex, 0, movedProfile);
+        // actualizamos el estado con el nuevo array de perfiles modificados 
+        setCurrentPerfiles(updatedPerfiles);
       }
-      setPerfiles(updatedPerfiles);
     }
+
+    if (active.data.current.type === 'perfil' && over.data.current.type === 'column') {
+      console.log("entramos al if de pasando acoluna se supone que deberiasmos de poder pasar el perfil a la columna")
+      // sacamos los id activos y los id de destino
+      const profileId = active.id;
+      const destinationColumnId = over.id;
+      // esto recorre la columna y después recorre los perfiles dentro de la columna para verificar si encuentra alguna coincidencia y retorna el índice de la columna donde está el perfil o -1
+      const indexProfilId = currentProfiles.findIndex((column) => column.some((profile) => profile.id === profileId));
+      const indexDestinationColumnId = currentProfiles.findIndex((column) => column.some((profile) => profile.id === destinationColumnId));
+
+      const updatedPerfiles = [...currentProfiles];
+
+      if (active.data.current.type === 'perfil' && over.data.current.type === 'column' && indexProfilId !== -1 && indexDestinationColumnId === -1) {
+        console.log("entramos al if 2 de pasar")
+
+       
+
+        const emptyDestinationColumn = updatedPerfiles[destinationColumnId]
+        // Si el array de destino está vacío, simplemente puedes agregar el perfil movido a esa columna.
+        if (emptyDestinationColumn) {
+          console.log("entramos al if 3 de pasar")
+
+          const ProfileIndex = updatedPerfiles[indexProfilId].findIndex((profile) => profile.id === profileId);
+          const [movedProfile] = updatedPerfiles[indexProfilId].splice(ProfileIndex, 1);
+
+
+          updatedPerfiles[destinationColumnId -1].push(movedProfile);
+          // // actualizamos el estado con el nuevo array de perfiles modificados 
+          setCurrentPerfiles(updatedPerfiles);
+
+
+        }
+      }
+    }
+
+  };
+
+// funcion apra cuando dan cli al inicio al perfil
+  function  handleDragStart (event) {
+    const { active, over } = event;
+    console.log("entramos al drag start")
+    const name = active.data.current.name
+    setProfileActive(name)
+   
   }
-};
-
-
+  
   return (
     <section className='section'>
-      <div className='config'></div>
+      <div className='config'>
+        <Setting  profileActive={profileActive} /> 
+        
+ 
+        
+      </div>
       <div className='result'>
-        <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd} >
-          <SortableContext items={columns} >
+        <DndContext collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+          <SortableContext items={columns}  >
             {columns.map((column) => (
-              <Columns column={column} perfiles={perfiles}/>
+              <Columns column={column} perfiles={currentProfiles} />
             ))}
           </SortableContext>
-        {
-          createPortal(
-          
-          <DragOverlay>
-            <h4>Moviendose</h4>
-          </DragOverlay>,document.body
+          {
+            createPortal(
 
-        )}
+              <DragOverlay>
+                <p className='moving'>Moving</p>
+              </DragOverlay>, document.body
+
+            )}
         </DndContext>
       </div>
     </section>
