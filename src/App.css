@@ -1,0 +1,10 @@
+
+.activate{
+    background-color: yellow;
+}
+.activate-r{
+    background-color: aqua;
+}
+.noActivate-r{
+    opacity: 0.2;
+}
