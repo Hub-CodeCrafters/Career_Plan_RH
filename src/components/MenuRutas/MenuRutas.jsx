@@ -18,12 +18,11 @@ export default function MenuRutas() {
   
     }
     return (
-      <div style={{ position: "absolute", top: "90vh", width: "100vw" }}>
+      <div style={{ position: "absolute", top: "1vh", width: "100vw" }}>
         {idSelected && <center>
-          <button onClick={changeRuta}>Mostrar otra ruta</button>
+          <button className='botton' onClick={changeRuta}>Mostrar otra ruta</button>
           <span>{page}  de {rutas.length}</span>
         </center>}
       </div>
-  
     )
   }

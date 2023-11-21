@@ -17,19 +17,30 @@ function Perfil({ perfil }) {
 
     let perfilId = perfil.id
     let rutasPerfil = perfil.routes
-    
+
     const onClick = () => {
-        handleActivate()
-        dispatch({ type: types.changeId, payload: { perfilId, rutasPerfil } })
+        if(activate){
+            dispatch({ type: types.changeId, payload: { perfilId, rutasPerfil } })
+            handleActivate()
+        }else{
+            dispatch({ type: types.resetState})
+            handleActivate()
+        }
+   
     };
+
+    if(perfil.id == 1){
+        console.log(activate, idSelected === perfil.id)
+    }
 
     return (
         <div
-
-            className={`perfil ${activate && idSelected === perfil.id ? "activate" : "" || rutaSeleccionada?.includes(perfil.id) ? "activate-r" : "noActivate-r"}`}
+            style={{ height: "40px !important" }}
+            className={`perfil ${idSelected === perfil.id ? "activate" : "" || rutaSeleccionada?.includes(perfil.id) ? "activate-r" : "noActivate-r"}`}
             onClick={onClick}>
-            <h1>{perfil.name}</h1>
-
+            <div className="perfilName" style={{ fontSize: "8px" }}>
+                <h1>{perfil.name}</h1>
+            </div>
         </div>
     );
 

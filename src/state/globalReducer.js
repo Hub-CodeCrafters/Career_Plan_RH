@@ -1,6 +1,7 @@
 const types = {
     changeId: 'change id',
-    changeRutas: 'change rutas'
+    changeRutas: 'change rutas',
+    resetState: 'reset state'
 }
 
 const initialState = {
@@ -20,11 +21,15 @@ const GlobalReducer = (state, action) => {
                 rutaSeleccionada: action.payload.rutasPerfil[0],
             }
         case types.changeRutas:
-            console.log(state.rutas[action.payload], action.payload)
         return {
             ...state,
             rutaSeleccionada: state.rutas[action.payload],
             rutaActual: action.payload
+        }
+        case types.resetState:
+        return {
+            ...state,
+            ...initialState
         }
         default:
             return state

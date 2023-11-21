@@ -177,18 +177,6 @@ function User() {
 
   ]);
 
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <section className='section-user'>
       <GlobalProvider>

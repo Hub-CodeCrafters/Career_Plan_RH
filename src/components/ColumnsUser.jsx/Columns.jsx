@@ -9,14 +9,16 @@ function Columns({ column, perfiles }) {
 
     return (
         <div
-            className="column"
+            className="containColumns-user"
         >
+            <div className="column">
             <SortableContext items={profilesForColumn} >
                 {profilesForColumn.map((perfil) => (
                     <Perfil perfil={perfil} column={column} />
                 ))}
             </SortableContext>
-
+            </div>
+            <div className="idColumn">{column.id}</div>
         </div>
     );
 }
