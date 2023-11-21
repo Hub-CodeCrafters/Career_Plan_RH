@@ -11,12 +11,8 @@ import {
 
 import {
   SortableContext,
-  verticalListSortingStrategy,
-  arrayMove,
-  horizontalListSortingStrategy
 } from "@dnd-kit/sortable";
 
-import Perfil from "../components/Perfil"
 import Columns from "../components/Columns"
 import { createPortal } from 'react-dom';
 
