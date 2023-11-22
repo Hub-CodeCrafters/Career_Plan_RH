@@ -6,10 +6,13 @@ import {
 import Columns from "../components/ColumnsUser.jsx/Columns"
 import GlobalProvider from '../state/global';
 import MenuRutas from '../components/MenuRutas/MenuRutas';
+import Setting from '../components/Setting';
+
 
 
 function User() {
-
+  const [profileActive, setProfileActive] = useState("");
+  
   const [columns, setColums] = useState([
     { id: 1, name: 'coluna 1' },
     { id: 2, name: 'coluna 2' },
@@ -178,11 +181,14 @@ function User() {
   ]);
 
   return (
-    <section className='section-user'>
+    <section className='section'>
       <GlobalProvider>
-
-        <div className='result-user'>
-          <MenuRutas />
+      <div className='config'>
+      <Setting profileActive={profileActive} />
+      <MenuRutas />
+    </div>
+        <div className='result'>
+         
           <SortableContext items={columns} >
             {columns.map((column) => (
               <Columns column={column} perfiles={perfiles} key={column.id} />

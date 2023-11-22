@@ -9,7 +9,7 @@ function Columns({ column, perfiles }) {
 
     return (
         <div
-            className="containColumns-user"
+            className="containColumns"
         >
             <div className="column">
             <SortableContext items={profilesForColumn} >

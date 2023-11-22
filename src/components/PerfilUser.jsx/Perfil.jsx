@@ -38,7 +38,7 @@ function Perfil({ perfil }) {
             style={{ height: "40px !important" }}
             className={`perfil ${idSelected === perfil.id ? "activate" : "" || rutaSeleccionada?.includes(perfil.id) ? "activate-r" : "noActivate-r"}`}
             onClick={onClick}>
-            <div className="perfilName" style={{ fontSize: "8px" }}>
+            <div className="perfilName" style={{ fontSize: "6px" }}>
                 <h1>{perfil.name}</h1>
             </div>
         </div>
