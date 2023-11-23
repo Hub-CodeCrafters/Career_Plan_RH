@@ -2,7 +2,7 @@
     [
         { id: 101, name: 'Auxiliar IT' },
         { id: 102, name: 'Auxiliar Adm' },
-        { id: 103, name: 'Profesional Semillero' }
+        { id: 103, name: 'Profesional Semillero', routes: [[111, 128, 162, 171], [111, 164, 171, 205]] }
     ],
     [
         { id:104, name: 'Asistente Amd' },

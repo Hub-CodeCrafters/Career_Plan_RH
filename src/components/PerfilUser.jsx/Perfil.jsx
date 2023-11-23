@@ -12,15 +12,20 @@ function Perfil({ perfil }) {
 
     const [state, dispatch] = useContext(GlobalContext)
 
-    let { idSelected, rutas, rutaSeleccionada, rutaActual } = state
+    let { idSelected, rutaSeleccionada } = state
 
 
     let perfilId = perfil.id
     let rutasPerfil = perfil.routes
+    let estudios = perfil.estudios
+    let experiencia = perfil.experiencia
+    let habilidades = perfil.habilidades
+    let competencias = perfil.competencias
+    let perfilName = perfil.name
 
     const onClick = () => {
-        if(activate){
-            dispatch({ type: types.changeId, payload: { perfilId, rutasPerfil } })
+        if(activate && rutasPerfil){
+            dispatch({ type: types.changeId, payload: { perfilId, rutasPerfil, estudios, experiencia, habilidades, competencias, perfilName } })
             handleActivate()
         }else{
             dispatch({ type: types.resetState})
@@ -29,9 +34,7 @@ function Perfil({ perfil }) {
    
     };
 
-    if(perfil.id == 1){
-        console.log(activate, idSelected === perfil.id)
-    }
+
 
     return (
         <div
