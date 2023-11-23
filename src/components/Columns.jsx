@@ -9,38 +9,34 @@ function Columns({ column, perfiles,}) {
 
     const profilesForColumn = perfiles[columnId - 1] || [];
 
-    const {
-        attributes,
-        listeners,
-        setNodeRef,
-        transform,
-        transition,
-    } = useSortable({
-        id: column.id,
-        data: {
-            type: 'column'
-        }
-    });
+    // const {
+    //     attributes,
+    //     listeners,
+    //     setNodeRef,
+    //     transform,
+    //     transition,
+    // } = useSortable({
+    //     id: column.id,
+    //     data: {
+    //         type: 'column'
+    //     }
+    // });
 
-    const style = {
-        transform: CSS.Transform.toString(transform),
-        transition,
+    // const style = {
+    //     transform: CSS.Transform.toString(transform),
+    //     transition,
        
-    };
+    // };
 
    
     return (
         <div className="containColumns">
             <div
-               ref={setNodeRef}
-               {...attributes}
-               {...listeners}
-               style={style}
                 className="column"
             >
                 <SortableContext items={profilesForColumn}>
-                    {profilesForColumn.map((perfil) => (
-                        <Perfil perfil={perfil} column={column} style={style} />
+                    {profilesForColumn.map((perfil,index) => (
+                        <Perfil perfil={perfil} column={column} key={"profile" + index}/>
                     ))}
                 </SortableContext>
             </div>

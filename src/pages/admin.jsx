@@ -7,6 +7,9 @@ import {
   DndContext,
   closestCenter,
   DragOverlay,
+  useSensors,
+  useSensor,
+  PointerSensor,
 } from "@dnd-kit/core";
 
 import {
@@ -23,6 +26,7 @@ import Perfiles from "../data/perfiles"
 import Setting from '../components/Setting';
 import MenuLateral from '../components/menuLateral/menuLateral';
 import GlobalProvider from '../state/global';
+import data from '../data/data';
 
 
 function Admin() {
@@ -42,14 +46,12 @@ function Admin() {
     { id: 11, name: 'coluna 11' },
     { id: 12, name: 'coluna 12' }
   ]);
-  const [currentProfiles, setCurrentPerfiles] = useState(Perfiles);
+  const [currentProfiles, setCurrentPerfiles] = useState(data);
 
-  const [profileActive, setProfileActive] = useState("");
+  // var jsonData = JSON.stringify(data);
+  // var object = JSON.parse(jsonData);
 
-
-
-
-
+  const [profileActive, setProfileActive] = useState(null);
 
 
   // funcion que cambia el perfil la pocicion de un perfil  siempre y cuando hallan perfiles 
@@ -114,36 +116,38 @@ function Admin() {
 
   // funcion apra cuando dan cli al inicio al perfil
   function handleDragStart(event) {
+    console.log(event)
     const { active, over } = event;
-
-    const name = active.data.current.name
-    setProfileActive(name)
-
-
-
+    //const name = active.data.current.name
+    setProfileActive(active.data.current)
   }
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    })
+  )
 
   return (
     <GlobalProvider>
       <section className='section'>
         <div className='config'>
-          {/* <Setting profileActive={profileActive} /> */}
-          <MenuLateral profileActive={profileActive}/>
-
-
+          <MenuLateral/>
         </div>
         <div className='result'>
-          <DndContext collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+          <DndContext collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd} sensors={sensors}>
             <SortableContext items={columns}  >
-              {columns.map((column) => (
-                <Columns column={column} perfiles={currentProfiles} />
+              {columns.map((column,index) => (
+                <Columns column={column} perfiles={currentProfiles} key={"column" + index}/>
               ))}
             </SortableContext>
             {
               createPortal(
 
                 <DragOverlay>
-                  <p className='moving'>Moving</p>
+                  <p className='moving'>{profileActive ? profileActive.name : ""}</p>
                 </DragOverlay>, document.body
 
               )}
