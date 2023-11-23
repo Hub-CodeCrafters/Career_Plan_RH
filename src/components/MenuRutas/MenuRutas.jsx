@@ -3,7 +3,7 @@ import { GlobalContext } from '../../state/global';
 import { types } from '../../state/globalReducer';
 export default function MenuRutas() {
     const [state, dispatch] = useContext(GlobalContext)
-    let { idSelected, rutas, rutaActual } = state
+    let { idSelected, rutas, perfil } = state
   
     let [page, setPage] = useState(1)
   
@@ -19,10 +19,12 @@ export default function MenuRutas() {
     }
     return (
       <div >
-        {idSelected && <center>
+        {idSelected != 0 && <center>
+          <h1 style={{color:"white", margin:"5vh 0 "}}>{perfil}</h1>
           <button className='botton' onClick={changeRuta}>Mostrar otra ruta</button>
-          <span>{page}  de {rutas.length}</span>
-        </center>}
+          <span style={{color:"white", marginLeft:"7px"}}>{page} ruta  de {rutas.length}</span>
+        </center> }
+        
       </div>
     )
   }

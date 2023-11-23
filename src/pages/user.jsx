@@ -7,12 +7,13 @@ import Columns from "../components/ColumnsUser.jsx/Columns"
 import GlobalProvider from '../state/global';
 import MenuRutas from '../components/MenuRutas/MenuRutas';
 import Setting from '../components/Setting';
+import RequisitosUser from '../components/RequisitosUser.jsx/RequisitosUser';
 
 
 
 function User() {
   const [profileActive, setProfileActive] = useState("");
-  
+
   const [columns, setColums] = useState([
     { id: 1, name: 'coluna 1' },
     { id: 2, name: 'coluna 2' },
@@ -32,8 +33,10 @@ function User() {
 
   const [perfiles, setPerfiles] = useState([
     [
-      { id: 1, column: 1, name: 'Profesional semillero', routes: [[9,26, 60, 69], [9,62, 69, 103], [9,45,62,71]]  },
-      { id: 2, column: 1, name: 'Auxiliar IT', routes: [[11,22,52]] },
+      {
+        id: 1, column: 1, name: 'Profesional semillero', routes: [[9, 26, 60, 69], [9, 62, 69, 103], [9, 45, 62, 71]], estudios: [{tipo: "Ingles", calidad: "Básico"}], experiencia : [{tipo:"Técnica(ArcGIS)",años : 0}, {tipo:"EsriNosa",años : 2}], habilidades:[ "Trabajo en equipo","Aprendizaje continuo","Comunicación","Orientación al cliente","Orientación al logo"] , competencias : ["Fundamentos ArcGIS", "Gestión de Datos", "Manipulación de datos", "Visualización de datos", "Compartir datos", "Análisis"]
+      },
+      { id: 2, column: 1, name: 'Auxiliar IT', routes: [[11, 22, 52]], estudios: [{tipo: "Ingles", calidad: "Básico"}, {tipo:"Nivel educativo", calidad: "Técnico, tecnólogo, profesional o estudiante de últimos semestres"}], habilidades:[ "Trabajo en equipo","Aprendizaje continuo","Comunicación","Orientación al cliente","Orientación al logo", "Habilidades interpersonales","Aención al detalle", "Habilidades informáticas"] , competencias : ["Fundamentos ArcGIS"] },
       { id: 3, column: 3, name: 'Auxiliar Adm' }
     ],
     [
@@ -46,7 +49,15 @@ function User() {
       { id: 8, column: 3, name: 'Diseñador Web' }
     ],
     [
-      { id: 9, column: 4, name: 'Ing. Mercadeo Técnico' },
+      {
+        id: 9, column: 4, name: 'Ing. Mercadeo Técnico', "routes": [
+          [
+            62,
+            69,
+            103
+          ]
+        ]
+      },
       { id: 10, column: 4, name: 'Asesor Comercial' },
       { id: 11, column: 4, name: 'Analista IT' },
       { id: 17, column: 4, name: 'Analista SIG' },
@@ -57,14 +68,14 @@ function User() {
       { id: 18, column: 4, name: 'Analista WEB' },
       { id: 19, column: 4, name: 'Community Manager' },
       { id: 20, column: 4, name: 'Analista de Bases de Datos e Información' },
-      {id: 21, column: 4, name: 'Analista de Seguridad de la Información' },
+      { id: 21, column: 4, name: 'Analista de Seguridad de la Información' },
       { id: 22, column: 4, name: 'Analista de Datos' },
       { id: 23, column: 4, name: 'Community de Gestión del Cambio' },
       { id: 24, column: 4, name: 'Analista control interno' },
     ],
     [
       { id: 25, column: 4, name: 'Ing. de Soporte ISC' },
-      {id: 43, column: 4, name: 'Coor. Administrativo'},
+      { id: 43, column: 4, name: 'Coor. Administrativo' },
       { id: 26, column: 4, name: 'Coor Semillero' },
       { id: 27, column: 4, name: 'Coor. de Eventos' },
       { id: 28, column: 4, name: 'Coor. ADM y SST' },
@@ -76,7 +87,7 @@ function User() {
       { id: 34, column: 4, name: 'Coordinador Digital Web' },
       { id: 35, column: 4, name: 'Coordinador de Calidad' },
       { id: 36, column: 4, name: 'Especialista de Producto' },
-      {id: 37, column: 4, name: 'Programador' },
+      { id: 37, column: 4, name: 'Programador' },
       { id: 38, column: 4, name: 'Coor. Operaciones Partners' },
       { id: 39, column: 4, name: 'Coor. de Comunidad' },
       { id: 40, column: 4, name: 'Coor. Adminsitrativo - Radicación' },
@@ -183,12 +194,13 @@ function User() {
   return (
     <section className='section'>
       <GlobalProvider>
-      <div className='config'>
-      <Setting profileActive={profileActive} />
-      <MenuRutas />
-    </div>
+        <div className='config'>
+          {/* <Setting profileActive={profileActive} /> */}
+          <MenuRutas />
+          <RequisitosUser />
+        </div>
         <div className='result'>
-         
+
           <SortableContext items={columns} >
             {columns.map((column) => (
               <Columns column={column} perfiles={perfiles} key={column.id} />
