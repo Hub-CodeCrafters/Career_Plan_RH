@@ -100,3 +100,7 @@
     display: block;
   }
 }
+
+.seleccionado{
+  background-color: white;
+}
