@@ -20,8 +20,8 @@ const Rutas = () => {
     const [guardar, setGuardar] = useState(false);
     const [options, setOptions] = useState(data[0]);
     const [valores, setValores] = useState({
-        nivel: 1,
-        perfil: data[0][0]
+        nivel: data[0][0].column,
+        perfil: data[0][0].name
     });
     const handleAdd = (e) => {
         setValores({

@@ -7,7 +7,7 @@ function Columns({ column, perfiles,}) {
 
     const columnId = parseInt(column.id);
 
-    const profilesForColumn = perfiles[columnId - 1] || [];
+    const profilesForColumn = perfiles || [];
 
     // const {
     //     attributes,
@@ -40,7 +40,7 @@ function Columns({ column, perfiles,}) {
                     ))}
                 </SortableContext>
             </div>
-            <div className="idColumn">{column.id}</div>
+            <div className="idColumn">{column.name}</div>
         </div>
     );
 }
