@@ -2,51 +2,51 @@
   "columns": [
     {
       "id": 1,
-      "name": "1"
+      "name": "A1"
     },
     {
       "id": 2,
-      "name": "2"
+      "name": "A2"
     },
     {
       "id": 3,
-      "name": "3"
+      "name": "A3"
     },
     {
       "id": 4,
-      "name": "4"
+      "name": "B1"
     },
     {
       "id": 5,
-      "name": "5"
+      "name": "B2"
     },
     {
       "id": 6,
-      "name": "6"
+      "name": "B3"
     },
     {
       "id": 7,
-      "name": "7"
+      "name": "C1"
     },
     {
       "id": 8,
-      "name": "8"
+      "name": "C2"
     },
     {
       "id": 9,
-      "name": "9"
+      "name": "C3"
     },
     {
       "id": 10,
-      "name": "10"
+      "name": "D1"
     },
     {
       "id": 11,
-      "name": "11"
+      "name": "D2"
     },
     {
       "id": 12,
-      "name": "12"
+      "name": "D3"
     }
   ],
   "profiles": [
@@ -147,32 +147,74 @@
     {
       "id": 3,
       "column": 1,
-      "name": "Auxiliar Adm"
+      "name": "Auxiliar Adm",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 4,
       "column": 2,
-      "name": "Asistente Administrativo"
+      "name": "Asistente Administrativo",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 5,
       "column": 2,
-      "name": "Asesor Servicio al Cliente"
+      "name": "Asesor Servicio al Cliente",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 6,
       "column": 3,
-      "name": "Diseñador Multimedia"
+      "name": "Diseñador Multimedia",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 7,
       "column": 3,
-      "name": "Diseñador Gráfico"
+      "name": "Diseñador Gráfico",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 8,
       "column": 3,
-      "name": "Diseñador Web"
+      "name": "Diseñador Web",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 9,
@@ -184,567 +226,1355 @@
           69,
           103
         ]
-      ]
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 10,
       "column": 4,
-      "name": "Asesor Comercial"
+      "name": "Asesor Comercial",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 11,
       "column": 4,
-      "name": "Analista IT"
+      "name": "Analista IT",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 17,
       "column": 4,
-      "name": "Analista SIG"
+      "name": "Analista SIG",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 13,
       "column": 4,
-      "name": "Analista Adm."
+      "name": "Analista Adm.",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 14,
       "column": 4,
-      "name": "Ing. de Soporte"
+      "name": "Ing. de Soporte",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 15,
       "column": 4,
-      "name": "Analista de Mercadeo"
+      "name": "Analista de Mercadeo",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 16,
       "column": 4,
-      "name": "Copywriter"
+      "name": "Copywriter",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 18,
       "column": 4,
-      "name": "Analista WEB"
+      "name": "Analista WEB",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 19,
       "column": 4,
-      "name": "Community Manager"
+      "name": "Community Manager",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 20,
       "column": 4,
-      "name": "Analista de Bases de Datos e Información"
+      "name": "Analista de Bases de Datos e Información",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 21,
       "column": 4,
-      "name": "Analista de Seguridad de la Información"
+      "name": "Analista de Seguridad de la Información",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 22,
       "column": 4,
-      "name": "Analista de Datos"
+      "name": "Analista de Datos",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 23,
       "column": 4,
-      "name": "Community de Gestión del Cambio"
+      "name": "Community de Gestión del Cambio",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 24,
       "column": 4,
-      "name": "Analista control interno"
+      "name": "Analista control interno",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 25,
       "column": 5,
-      "name": "Ing. de Soporte ISC"
+      "name": "Ing. de Soporte ISC",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 43,
       "column": 5,
-      "name": "Coor. Administrativo"
+      "name": "Coor. Administrativo",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 26,
       "column": 5,
-      "name": "Coor Semillero"
+      "name": "Coor Semillero",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 27,
       "column": 5,
-      "name": "Coor. de Eventos"
+      "name": "Coor. de Eventos",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 28,
       "column": 5,
-      "name": "Coor. ADM y SST"
+      "name": "Coor. ADM y SST",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 29,
       "column": 5,
-      "name": "Coordinador de Selección"
+      "name": "Coordinador de Selección",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 30,
       "column": 5,
-      "name": "Coordinador Selección"
+      "name": "Coordinador Selección",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 31,
       "column": 5,
-      "name": "Coordinador PR"
+      "name": "Coordinador PR",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 32,
       "column": 5,
-      "name": "Coordinador de Compras"
+      "name": "Coordinador de Compras",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 33,
       "column": 5,
-      "name": "Coordinador de Arte y Diseño"
+      "name": "Coordinador de Arte y Diseño",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 34,
       "column": 5,
-      "name": "Coordinador Digital Web"
+      "name": "Coordinador Digital Web",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 35,
       "column": 5,
-      "name": "Coordinador de Calidad"
+      "name": "Coordinador de Calidad",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 36,
       "column": 5,
-      "name": "Especialista de Producto"
+      "name": "Especialista de Producto",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 37,
       "column": 5,
-      "name": "Programador"
+      "name": "Programador",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 38,
       "column": 5,
-      "name": "Coor. Operaciones Partners"
+      "name": "Coor. Operaciones Partners",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 39,
       "column": 5,
-      "name": "Coor. de Comunidad"
+      "name": "Coor. de Comunidad",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 40,
       "column": 5,
-      "name": "Coor. Adminsitrativo - Radicación"
+      "name": "Coor. Adminsitrativo - Radicación",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 41,
       "column": 6,
-      "name": "Gerente de Cuenta"
+      "name": "Gerente de Cuenta",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 42,
       "column": 6,
-      "name": "Trainer"
+      "name": "Trainer",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 12,
       "column": 6,
-      "name": "Representante de Ventas"
+      "name": "Representante de Ventas",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 44,
       "column": 6,
-      "name": "Ing. de Soporte ISC 2do Nivel"
+      "name": "Ing. de Soporte ISC 2do Nivel",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 45,
       "column": 6,
-      "name": "Instructor SIG"
+      "name": "Instructor SIG",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 46,
       "column": 6,
-      "name": "Quality Assurance Coordinator"
+      "name": "Quality Assurance Coordinator",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 47,
       "column": 6,
-      "name": "Coor. Programa BP"
+      "name": "Coor. Programa BP",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 48,
       "column": 6,
-      "name": "Coor. Gestión del Cambio"
+      "name": "Coor. Gestión del Cambio",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 49,
       "column": 6,
-      "name": "Especialista SIG"
+      "name": "Especialista SIG",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 50,
       "column": 6,
-      "name": "Coor. de Proyectos"
+      "name": "Coor. de Proyectos",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 51,
       "column": 6,
-      "name": "Especialista Martech"
+      "name": "Especialista Martech",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 52,
       "column": 6,
-      "name": "Especialista IT"
+      "name": "Especialista IT",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 53,
       "column": 6,
-      "name": "Coordinador de Mercadeo"
+      "name": "Coordinador de Mercadeo",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 54,
       "column": 6,
-      "name": "Coordinador de Generación de Demanda"
+      "name": "Coordinador de Generación de Demanda",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 55,
       "column": 6,
-      "name": "Coordinador de Control Financiero"
+      "name": "Coordinador de Control Financiero",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 56,
       "column": 6,
-      "name": "Coordinador de Operaciones"
+      "name": "Coordinador de Operaciones",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 57,
       "column": 6,
-      "name": "Coordinador de Adopción"
+      "name": "Coordinador de Adopción",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 58,
       "column": 6,
-      "name": "Especialista de Comunidad"
+      "name": "Especialista de Comunidad",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 59,
       "column": 6,
-      "name": "Especialista de Salesforce"
+      "name": "Especialista de Salesforce",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 60,
       "column": 7,
-      "name": "Lider del Semillero"
+      "name": "Lider del Semillero",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 61,
       "column": 7,
-      "name": "Technical Account Manager"
+      "name": "Technical Account Manager",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 62,
       "column": 7,
-      "name": "Lider Especialista SIG"
+      "name": "Lider Especialista SIG",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 63,
       "column": 7,
-      "name": "Líder de Eventos"
+      "name": "Líder de Eventos",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 64,
       "column": 7,
-      "name": "Líder de Técnico"
+      "name": "Líder de Técnico",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 65,
       "column": 7,
-      "name": "Líder de Producto"
+      "name": "Líder de Producto",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 66,
       "column": 7,
-      "name": "Líder de Generación de Demanda"
+      "name": "Líder de Generación de Demanda",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 67,
       "column": 7,
-      "name": "Ing. de Desarrollo"
+      "name": "Ing. de Desarrollo",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 68,
       "column": 7,
-      "name": "Lider de Operaciones"
+      "name": "Lider de Operaciones",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 69,
       "column": 8,
-      "name": "Ing. de Solución"
+      "name": "Ing. de Solución",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 70,
       "column": 8,
-      "name": "Ing. de Propuestas"
+      "name": "Ing. de Propuestas",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 71,
       "column": 8,
-      "name": "Consultor SIG"
+      "name": "Consultor SIG",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 72,
       "column": 8,
-      "name": "Group Lead"
+      "name": "Group Lead",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 73,
       "column": 8,
-      "name": "Líder de Adopción"
+      "name": "Líder de Adopción",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 74,
       "column": 8,
-      "name": "Líder de Partners"
+      "name": "Líder de Partners",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 75,
       "column": 8,
-      "name": "Líder de Comunicaciones"
+      "name": "Líder de Comunicaciones",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 76,
       "column": 8,
-      "name": "Des. de Alianzas"
+      "name": "Des. de Alianzas",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 77,
       "column": 8,
-      "name": "Consultor en Ciencia de Datos"
+      "name": "Consultor en Ciencia de Datos",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 78,
       "column": 8,
-      "name": "Consultor de Requerimientos de Analitica"
+      "name": "Consultor de Requerimientos de Analitica",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 79,
       "column": 8,
-      "name": "Gerente de Desarrollo de Negocios"
+      "name": "Gerente de Desarrollo de Negocios",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 80,
       "column": 8,
-      "name": "Trainer Lead"
+      "name": "Trainer Lead",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 81,
       "column": 8,
-      "name": "Líder de Gestion Humana"
+      "name": "Líder de Gestion Humana",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 82,
       "column": 8,
-      "name": "Abagado"
+      "name": "Abagado",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 83,
       "column": 8,
-      "name": "Líder de Datos"
+      "name": "Líder de Datos",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 84,
       "column": 8,
-      "name": "Especialista Salesforce"
+      "name": "Especialista Salesforce",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 85,
       "column": 8,
-      "name": "Líder Gestion del Cambio"
+      "name": "Líder Gestion del Cambio",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 86,
       "column": 8,
-      "name": "Líder de Canales"
+      "name": "Líder de Canales",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 87,
       "column": 8,
-      "name": "Líder de Contenidos"
+      "name": "Líder de Contenidos",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 88,
       "column": 8,
-      "name": "Líder Habilitación de Ventas"
+      "name": "Líder Habilitación de Ventas",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 89,
       "column": 9,
-      "name": "Gerente de Cuenta Clave"
+      "name": "Gerente de Cuenta Clave",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 90,
       "column": 9,
-      "name": "Gerente de Producto"
+      "name": "Gerente de Producto",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 91,
       "column": 9,
-      "name": "Ingeniero de Desarrollo Experto"
+      "name": "Ingeniero de Desarrollo Experto",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 92,
       "column": 9,
-      "name": "Gerente Exito del Cliente"
+      "name": "Gerente Exito del Cliente",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 93,
       "column": 9,
-      "name": "Genente de Operaciones"
+      "name": "Genente de Operaciones",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 94,
       "column": 10,
-      "name": "Gerente de Sector"
+      "name": "Gerente de Sector",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 95,
       "column": 10,
-      "name": "Gerente de Partners"
+      "name": "Gerente de Partners",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 96,
       "column": 10,
-      "name": "Gerente de Propuestas"
+      "name": "Gerente de Propuestas",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 97,
       "column": 10,
-      "name": "Gerente de Eventos y Contenido"
+      "name": "Gerente de Eventos y Contenido",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 98,
       "column": 10,
-      "name": "Gerente de Proyectos"
+      "name": "Gerente de Proyectos",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 99,
       "column": 10,
-      "name": "Gerente de Suporte -Site Manager"
+      "name": "Gerente de Suporte -Site Manager",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 100,
       "column": 10,
-      "name": "Gerente de Datos"
+      "name": "Gerente de Datos",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 101,
       "column": 10,
-      "name": "Gerente de Tecnología"
+      "name": "Gerente de Tecnología",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 102,
       "column": 10,
-      "name": "Gerente de Servicios Profecionales"
+      "name": "Gerente de Servicios Profecionales",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 103,
       "column": 10,
-      "name": "Technical Advisor"
+      "name": "Technical Advisor",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 104,
       "column": 10,
-      "name": "Gerente Funcional de Exito"
+      "name": "Gerente Funcional de Exito",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 105,
       "column": 10,
-      "name": "Gerente de Nuevos Mercados"
+      "name": "Gerente de Nuevos Mercados",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 106,
       "column": 10,
-      "name": "Gerente Funcional de Expanción"
+      "name": "Gerente Funcional de Expanción",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 107,
       "column": 10,
-      "name": "Gerente de Habilitación de Ventas"
+      "name": "Gerente de Habilitación de Ventas",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 108,
       "column": 10,
-      "name": "Gerente de Adopción"
+      "name": "Gerente de Adopción",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 109,
       "column": 11,
-      "name": "Director de Operaciones"
+      "name": "Director de Operaciones",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 110,
       "column": 11,
-      "name": "Director de Adopción"
+      "name": "Director de Adopción",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 111,
       "column": 11,
-      "name": "Arquitecto de Soluciones"
+      "name": "Arquitecto de Soluciones",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 112,
       "column": 11,
-      "name": "Director IT"
+      "name": "Director IT",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 113,
       "column": 11,
-      "name": "Director Juridico"
+      "name": "Director Juridico",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 114,
       "column": 12,
-      "name": "Gerente General"
+      "name": "Gerente General",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 115,
       "column": 12,
-      "name": "Gerente General (Ecuador y Panamá)"
+      "name": "Gerente General (Ecuador y Panamá)",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 116,
       "column": 12,
-      "name": "Director de Ventas y Mercadeo"
+      "name": "Director de Ventas y Mercadeo",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 117,
       "column": 12,
-      "name": "Director de Ventas"
+      "name": "Director de Ventas",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 118,
       "column": 12,
-      "name": "Director de Nuevos Negocios"
+      "name": "Director de Nuevos Negocios",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 119,
       "column": 12,
-      "name": "Director Exito"
+      "name": "Director Exito",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 120,
       "column": 12,
-      "name": "Director Gestión Humana"
+      "name": "Director Gestión Humana",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     },
     {
       "id": 121,
       "column": 12,
-      "name": "Director de Partners"
+      "name": "Director de Partners",
+      "routes": [
+        []
+      ],
+      "estudios": [],
+      "experiencia": [],
+      "habilidades": [],
+      "competencias": []
     }
   ]
 }

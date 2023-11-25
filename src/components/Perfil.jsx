@@ -5,14 +5,14 @@ import { useActivate } from "../hooks/useActivateCard";
 import { GlobalContext } from "../state/global";
 import { types } from "../state/globalReducer";
 
-function Perfil({ perfil, column}) {
-
-    let { activate, handleActivate } = useActivate();
+function Perfil({ perfil, column, display = true }) {
+    // let { activate, handleActivate } = useActivate();
+    let [activate, setActivate] = useState(true)
+    const handleActivate = () => setActivate(!activate)
 
     const [state, dispatch] = useContext(GlobalContext);
 
     let { idSelected, rutaSeleccionada } = state
-
 
     let perfilId = perfil.id
     let columnId = perfil.columnid
@@ -24,21 +24,20 @@ function Perfil({ perfil, column}) {
     let perfilName = perfil.name
 
     const onClick = () => {
-        if(activate && rutasPerfil){
+        if (idSelected !== perfil.id) {
             dispatch({ type: types.changeId, payload: { perfilId, columnId, rutasPerfil, estudios, experiencia, habilidades, competencias, perfilName } })
-            handleActivate()
-        }else{
-            dispatch({ type: types.resetState})
-            handleActivate()
+            handleActivate();
+        } else{
+            dispatch({ type: types.resetState, payload: state.profiles })
+            handleActivate();
         }
-   
     };
 
- 
+
 
     const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
         id: perfil.id,
-       
+
         data: {
             type: 'perfil',
             columnid: column.id,
@@ -49,7 +48,10 @@ function Perfil({ perfil, column}) {
 
     const style = {
         transform: CSS.Transform.toString(transform),
-        transition,     
+        transition,
+        visibility: !display && 'hidden',
+        width: !display && 0,
+        height: !display && 0
     }
     return (
         <div
@@ -61,7 +63,7 @@ function Perfil({ perfil, column}) {
             onClick={onClick}
         >
             <span className="perfilName">{perfil.name}</span>
-         
+
         </div>
     );
 }
