@@ -36,29 +36,37 @@ const Rutas = ({ profiles, columns }) => {
         perfil.routes[0].push(valores.perfil.id);
         setNewC(false);
         setOptions(profiles.filter((profile) => profile.column == 1));
-        fetch('http://localhost:3000/profiles/' + idSelected, {
+
+        var data = profiles.filter((profile) => profile.column === perfil.column);
+        fetch('https://json-server-gh.onrender.com/profiles/' + perfil.column, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(perfil)
+            body: JSON.stringify({
+                id: perfil.column,
+                data:data
+            })
         }).then(response => response.json())
             .then(newPerson => console.log(newPerson));
         dispatch({ type: types.updateProfiles, payload: profiles });
     }
 
     const handleDelete = (id) => {
-        console.log(id)
         const perfil = profiles.find((perfil) => perfil.id == idSelected);
         const index = perfil.routes[0].findIndex((element) => element === id);
         console.log(index)
         perfil.routes[0].splice(index, 1);
-        fetch('http://localhost:3000/profiles/' + idSelected, {
+        var data = profiles.filter((profile) => profile.column === perfil.column);
+        fetch('https://json-server-gh.onrender.com/profiles/' + perfil.column, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(perfil)
+            body: JSON.stringify({
+                id: perfil.column,
+                data:data
+            })
         }).then(response => response.json())
             .then(newPerson => console.log(newPerson));
         dispatch({ type: types.updateProfiles, payload: profiles });

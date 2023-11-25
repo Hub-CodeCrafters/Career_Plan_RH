@@ -16,7 +16,13 @@ const useDataFetch = (url) => {
                     return res.json();
                 })
                 .then(data => {
-                    setData(data);
+                    var currentProfiles = []
+                    data.map((element) => {
+                        element.data.map((item) => {
+                          currentProfiles.push(item);
+                        })
+                    })
+                    setData(currentProfiles);
                 })
                 .catch(err => {
                     console.log(err);

@@ -29,7 +29,7 @@ function Admin() {
   const [columns, setColums] = useState([]);
   useEffect(() => {
     setTimeout(() => {
-      fetch('http://localhost:3000/columns')
+      fetch('https://json-server-gh.onrender.com/columns')
         .then(res => {
           if (!res.ok) {
             throw Error('Error fetching users data');
@@ -43,10 +43,10 @@ function Admin() {
           console.log(err);
         });
     }, 1000);
-  }, ['http://localhost:3000/columns']);
+  }, ['https://json-server-gh.onrender.com/columns']);
 
   var { data: currentProfiles, error, isLoading, refetch, setData } = useDataFetch(
-    "http://localhost:3000/profiles"
+    "https://json-server-gh.onrender.com/profiles"
   );
 
   const [profileActive, setProfileActive] = useState(null);
@@ -54,7 +54,6 @@ function Admin() {
   const handleDragEnd = (event) => {
     // sacamos los atributos de los perfiles activos y los de destino
     const { active, over } = event;
-    console.log(active, over)
     if (active && over && active.data.current.type === 'perfil' && over.data.current.type === 'perfil' && active.id !== over.id) {
       // sacamos los id activos y los id de destino
       const profileId = active.id;
@@ -66,7 +65,6 @@ function Admin() {
       const updatedPerfiles = [...currentProfiles];
       // si encontro el indece del perfil activo y el de destino entramo al if para actaulizar la información
       if (indexProfilId !== -1 && indexDestinationProfileId !== -1) {
-        console.log(updatedPerfiles)
         //  entramoas a la coluna y buscamos el perfil  activoy guardamos los resultados en source profile index
         const ProfileIndex = updatedPerfiles.findIndex((profile) => profile.id === profileId);
         // aca entramos ala coluna de destino donde queremos mover el perfil y buscarmos si esta el perfil hay 
@@ -76,8 +74,31 @@ function Admin() {
         movedProfile.column = indexDestinationProfileId;
         // aca agregamos el perfil en la coluna de destino en el indice que encontramos
         updatedPerfiles.splice(destinationProfileIndex, 0, movedProfile);
-        console.log(updatedPerfiles)
         // actualizamos el estado con el nuevo array de perfiles modificados 
+        var data = updatedPerfiles.filter((profile) => profile.column === indexProfilId);
+        fetch('https://json-server-gh.onrender.com/profiles/' + (indexProfilId), {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: indexProfilId,
+            data: data
+          })
+        }).then(response => response.json())
+          .then(newPerson => console.log(newPerson));
+        data = updatedPerfiles.filter((profile) => profile.column === indexDestinationProfileId);
+        fetch('https://json-server-gh.onrender.com/profiles/' + (indexDestinationProfileId), {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: indexDestinationProfileId,
+            data: data
+          })
+        }).then(response => response.json())
+          .then(newPerson => console.log(newPerson));
         setData(updatedPerfiles);
       }
     }
@@ -128,7 +149,7 @@ function Admin() {
     <GlobalProvider>
       {currentProfiles && (<section className='section'>
         <div className='config'>
-          <MenuLateral perfiles={currentProfiles} columns={columns}/>
+          <MenuLateral perfiles={currentProfiles} columns={columns} />
         </div>
         <div className='result'>
           <DndContext collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd} sensors={sensors}>
