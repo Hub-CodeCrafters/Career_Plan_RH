@@ -13,9 +13,11 @@ const MenuLateral = ({ perfiles, columns }) => {
     };
 
     const addProfile = (e) => {
+        const ids = perfiles.map((profile) => profile.id);
+        const max = Math.max(...ids);
         e.preventDefault();
         perfil = {
-            id: perfiles[perfiles.length - 1].id + 1,
+            id: max + 1,
             column: +valores.nivel,
             name: valores.perfil,
             routes: [[]],
