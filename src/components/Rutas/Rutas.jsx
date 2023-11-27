@@ -33,6 +33,8 @@ const Rutas = ({ profiles, columns }) => {
             };
             const profilesOptions = profiles.filter((profile) => profile.column == e);
             setOptions(profilesOptions);
+        } else {
+            setOptions([])
         }
 
     }
@@ -115,15 +117,16 @@ const Rutas = ({ profiles, columns }) => {
                             }
                         }}>
                             {options?.map((option) => (
-                                <option key={option.id} value={option.id}>
-                                    {option.name}
+                                <option key={option?.id} value={option?.id}>
+                                    {option?.name}
                                 </option>
                             ))}
                         </select>
                     </div>
 
                 </div>}
-                {newC && <button style={{ width: "auto", borderRadius: "5px", backgroundColor: "#007bff", color: "white", padding: "10px", marginTop: "2vh" }} onClick={handleSave}>Guardar</button>}
+
+                {newC && options.length > 0 && <button style={{ width: "auto", borderRadius: "5px", backgroundColor: "#007bff", color: "white", padding: "10px", marginTop: "2vh" }} onClick={handleSave}>Guardar</button>}
                 {!newC && <button style={{ width: "auto", borderRadius: "5px", backgroundColor: "#007bff", color: "white", padding: "10px", marginTop: "2vh" }} onClick={() => { setNewC(!newC) }}>Relacionar otro perfil</button>}
             </section>
         </>
