@@ -9,12 +9,15 @@ const Rutas = ({ profiles, columns }) => {
     let routeProfiles = [];
     rutaSeleccionada.map((element) => {
         const perfil = profiles.find((perfil) => perfil.id == element);
-        let item = {
-            column: perfil.column,
-            id: perfil.id,
-            name: perfil.name
-        };
-        routeProfiles.push(item)
+        if (perfil) {
+            let item = {
+                column: perfil.column,
+                id: perfil.id,
+                name: perfil.name
+            };
+            routeProfiles.push(item)
+        }
+
     });
     const [newC, setNewC] = useState(false);
     const [options, setOptions] = useState(profiles.filter((profile) => profile.column == 1));
@@ -45,7 +48,7 @@ const Rutas = ({ profiles, columns }) => {
             },
             body: JSON.stringify({
                 id: perfil.column,
-                data:data
+                data: data
             })
         }).then(response => response.json())
             .then(newPerson => console.log(newPerson));
@@ -65,7 +68,7 @@ const Rutas = ({ profiles, columns }) => {
             },
             body: JSON.stringify({
                 id: perfil.column,
-                data:data
+                data: data
             })
         }).then(response => response.json())
             .then(newPerson => console.log(newPerson));
@@ -74,24 +77,26 @@ const Rutas = ({ profiles, columns }) => {
 
     return (
         <>
+        <hr></hr>
             <section>
                 <div id="ruta-1">
                     {routeProfiles.map((profile, index) => (
                         <div style={{ width: "100%", display: "flex", gap: "1px", margin: "1px" }} key={"route" + index}>
-                            <div style={{ width: "50%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                            <div style={{ width: "25%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
                                 {columns.find((column) => column.id == profile.column).name}
                             </div>
-                            <div style={{ width: "50%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                            <div style={{ width: "75%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
                                 {profile.name}
-                                <button onClick={(e) => handleDelete(profile.id)}>X</button>
+                                <button onClick={(e) => handleDelete(profile.id)} style={{backgroundColor:"transparent", color:"rgb(220, 53, 69)", border:"none"}}>X</button>
                             </div>
                         </div>
                     ))}
                 </div>
-                {newC && <div style={{ width: "100%", display: "flex", gap: "1vw", margin: "1px" }}>
-                    <div style={{ width: "50%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <label>Elija el nivel</label>
-                        <select onChange={(e) => handleAdd(e.target.value)}>
+                {newC &&  <p style={{color:"white"}}>Seleccione el nivel y perfil</p>}
+                {newC && <div style={{ width: "100%", display: "flex", margin: "1px", marginTop:"2vh" }}>
+                    
+                    <div style={{ width: "25%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <select onChange={(e) => handleAdd(e.target.value)} style={{width:"100%", height:"100%"}}>
                             {
                                 columns.map((column, index) => (
                                     <option key={"opt" + index} value={column.id}>{column.name}</option>
@@ -99,8 +104,8 @@ const Rutas = ({ profiles, columns }) => {
                             }
                         </select>
                     </div>
-                    <div style={{ width: "50%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <select id="select-dinamico" style={{ width: "100%" }} onChange={(e) => {
+                    <div style={{ width: "75%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <select id="select-dinamico" style={{ width: "100%", height:"100%" }} onChange={(e) => {
                             valores = {
                                 ...valores,
                                 perfil: profiles.find((perfil) => perfil.id == e.target.value)
@@ -115,8 +120,8 @@ const Rutas = ({ profiles, columns }) => {
                     </div>
 
                 </div>}
-                {newC && <button style={{ width: "auto", borderRadius: "5px", backgroundColor: "skyblue", color: "white", padding: "10px" }} onClick={handleSave}>Guardar</button>}
-                {!newC && <button style={{ width: "auto", borderRadius: "5px", backgroundColor: "skyblue", color: "white", padding: "10px" }} onClick={() => { setNewC(!newC) }}>Agregar otro perfil</button>}
+                {newC && <button style={{ width: "auto", borderRadius: "5px", backgroundColor: "#007bff", color: "white", padding: "10px",marginTop:"2vh" }} onClick={handleSave}>Guardar</button>}
+                {!newC && <button style={{ width: "auto", borderRadius: "5px", backgroundColor: "#007bff", color: "white", padding: "10px",marginTop:"2vh" }} onClick={() => { setNewC(!newC) }}>Relacionar otro perfil</button>}
             </section>
         </>
     )
