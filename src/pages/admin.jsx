@@ -29,7 +29,9 @@ function Admin() {
   const [columns, setColums] = useState([]);
   useEffect(() => {
     setTimeout(() => {
-      fetch('https://geoapps.esri.co/PDCJsonServer/columns')
+      fetch('https://geoapps.esri.co/PDCJsonServer/columns',{
+        mode: "cors",
+      })
         .then(res => {
           if (!res.ok) {
             throw Error('Error fetching users data');
@@ -77,6 +79,7 @@ function Admin() {
         // actualizamos el estado con el nuevo array de perfiles modificados 
         var data = updatedPerfiles.filter((profile) => profile.column === indexProfilId);
         fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + (indexProfilId), {
+          mode: "cors",
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -89,6 +92,7 @@ function Admin() {
           .then(newPerson => console.log(newPerson));
         data = updatedPerfiles.filter((profile) => profile.column === indexDestinationProfileId);
         fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + (indexDestinationProfileId), {
+          mode: "cors",
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

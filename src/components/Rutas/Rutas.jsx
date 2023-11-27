@@ -42,6 +42,7 @@ const Rutas = ({ profiles, columns }) => {
 
         var data = profiles.filter((profile) => profile.column === perfil.column);
         fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + perfil.column, {
+            mode: "cors",
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -62,6 +63,7 @@ const Rutas = ({ profiles, columns }) => {
         perfil.routes[0].splice(index, 1);
         var data = profiles.filter((profile) => profile.column === perfil.column);
         fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + perfil.column, {
+            mode: "cors",
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

@@ -31,6 +31,7 @@ const MenuLateral = ({ perfiles, columns }) => {
 
         document.getElementById("myForm").reset();
         fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + valores.nivel, {
+            mode: "cors",
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,6 +54,7 @@ const MenuLateral = ({ perfiles, columns }) => {
 
         var data = perfiles.filter((perfil) => perfil.column === profile.column);
         fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + profile.column, {
+            mode: "cors",
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

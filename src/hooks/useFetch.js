@@ -8,7 +8,9 @@ const useDataFetch = (url) => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            fetch(url)
+            fetch(url,{
+                mode: "cors",
+            })
                 .then(res => {
                     if (!res.ok) {
                         throw Error('Error fetching users data');
