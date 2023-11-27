@@ -23,9 +23,7 @@ function Setting({ profileActive }) {
 
 
     const handleProfiles = (event) => {
-        setRutaSelect(event.target.value)
-        console.log("evento", event.target.value)
-
+        setRutaSelect(event.target.value);
     }
 
     useEffect(() => {

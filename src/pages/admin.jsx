@@ -20,40 +20,36 @@ import Columns from "../components/Columns"
 import { createPortal } from 'react-dom';
 
 // data
-
-
-import Perfiles from "../data/perfiles"
-import Setting from '../components/Setting';
 import MenuLateral from '../components/menuLateral/menuLateral';
-import GlobalProvider from '../state/global';
-import data from '../data/data';
-
+import GlobalProvider from "../state/global";
+import useDataFetch from '../hooks/useFetch';
 
 function Admin() {
 
+  const [columns, setColums] = useState([]);
+  useEffect(() => {
+    setTimeout(() => {
+      fetch('https://json-server-gh.onrender.com/columns')
+        .then(res => {
+          if (!res.ok) {
+            throw Error('Error fetching users data');
+          }
+          return res.json();
+        })
+        .then(data => {
+          setColums(data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }, 1000);
+  }, ['https://json-server-gh.onrender.com/columns']);
 
-  const [columns, setColums] = useState([
-    { id: 1, name: 'coluna 1' },
-    { id: 2, name: 'coluna 2' },
-    { id: 3, name: 'coluna 3' },
-    { id: 4, name: 'coluna 4' },
-    { id: 5, name: 'coluna 5' },
-    { id: 6, name: 'coluna 6' },
-    { id: 7, name: 'coluna 7' },
-    { id: 8, name: 'coluna 8' },
-    { id: 9, name: 'coluna 9' },
-    { id: 10, name: 'coluna 10' },
-    { id: 11, name: 'coluna 11' },
-    { id: 12, name: 'coluna 12' }
-  ]);
-  const [currentProfiles, setCurrentPerfiles] = useState(data);
-
-  // var jsonData = JSON.stringify(data);
-  // var object = JSON.parse(jsonData);
+  var { data: currentProfiles, error, isLoading, refetch, setData } = useDataFetch(
+    "https://json-server-gh.onrender.com/profiles"
+  );
 
   const [profileActive, setProfileActive] = useState(null);
-
-
   // funcion que cambia el perfil la pocicion de un perfil  siempre y cuando hallan perfiles 
   const handleDragEnd = (event) => {
     // sacamos los atributos de los perfiles activos y los de destino
@@ -63,22 +59,47 @@ function Admin() {
       const profileId = active.id;
       const destinationProfileId = over.id;
       // esto recorre la coluna y despues recorre los perfiles  dentro de la coluna par aver si encuentra alguna coincidencia y retorna el indice del la coluna donde esta el perfil  o -1
-      const indexProfilId = currentProfiles.findIndex((column) => column.some((profile) => profile.id === profileId));
-      const indexDestinationProfileId = currentProfiles.findIndex((column) => column.some((profile) => profile.id === destinationProfileId));
+      const indexProfilId = active.data.current.columnid;
+      const indexDestinationProfileId = over.data.current.columnid;
       // creamos una copia de los perfiles 
       const updatedPerfiles = [...currentProfiles];
       // si encontro el indece del perfil activo y el de destino entramo al if para actaulizar la información
       if (indexProfilId !== -1 && indexDestinationProfileId !== -1) {
         //  entramoas a la coluna y buscamos el perfil  activoy guardamos los resultados en source profile index
-        const ProfileIndex = updatedPerfiles[indexProfilId].findIndex((profile) => profile.id === profileId);
+        const ProfileIndex = updatedPerfiles.findIndex((profile) => profile.id === profileId);
         // aca entramos ala coluna de destino donde queremos mover el perfil y buscarmos si esta el perfil hay 
-        const destinationProfileIndex = updatedPerfiles[indexDestinationProfileId].findIndex((profile) => profile.id === destinationProfileId);
+        const destinationProfileIndex = updatedPerfiles.findIndex((profile) => profile.id === destinationProfileId);
         // aca removemos el perfil de la coluna  y lo guardamos en un array
-        const [movedProfile] = updatedPerfiles[indexProfilId].splice(ProfileIndex, 1);
+        let movedProfile = updatedPerfiles.splice(ProfileIndex, 1)[0];
+        movedProfile.column = indexDestinationProfileId;
         // aca agregamos el perfil en la coluna de destino en el indice que encontramos
-        updatedPerfiles[indexDestinationProfileId].splice(destinationProfileIndex, 0, movedProfile);
+        updatedPerfiles.splice(destinationProfileIndex, 0, movedProfile);
         // actualizamos el estado con el nuevo array de perfiles modificados 
-        setCurrentPerfiles(updatedPerfiles);
+        var data = updatedPerfiles.filter((profile) => profile.column === indexProfilId);
+        fetch('https://json-server-gh.onrender.com/profiles/' + (indexProfilId), {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: indexProfilId,
+            data: data
+          })
+        }).then(response => response.json())
+          .then(newPerson => console.log(newPerson));
+        data = updatedPerfiles.filter((profile) => profile.column === indexDestinationProfileId);
+        fetch('https://json-server-gh.onrender.com/profiles/' + (indexDestinationProfileId), {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: indexDestinationProfileId,
+            data: data
+          })
+        }).then(response => response.json())
+          .then(newPerson => console.log(newPerson));
+        setData(updatedPerfiles);
       }
     }
 
@@ -88,7 +109,7 @@ function Admin() {
       const profileId = active.id;
       const destinationColumnId = over.id;
       // esto recorre la columna y después recorre los perfiles dentro de la columna para verificar si encuentra alguna coincidencia y retorna el índice de la columna donde está el perfil o -1
-      const indexProfilId = currentProfiles.findIndex((column) => column.some((profile) => profile.id === profileId));
+      const indexProfilId = active.data.current.columnid;
       const indexDestinationColumnId = currentProfiles.findIndex((column) => column.some((profile) => profile.id === destinationColumnId));
 
       const updatedPerfiles = [...currentProfiles];
@@ -101,13 +122,9 @@ function Admin() {
 
           const ProfileIndex = updatedPerfiles[indexProfilId].findIndex((profile) => profile.id === profileId);
           const [movedProfile] = updatedPerfiles[indexProfilId].splice(ProfileIndex, 1);
-
-
           updatedPerfiles[destinationColumnId - 1].push(movedProfile);
           // // actualizamos el estado con el nuevo array de perfiles modificados 
-          setCurrentPerfiles(updatedPerfiles);
-
-
+          setData(updatedPerfiles);
         }
       }
     }
@@ -116,7 +133,6 @@ function Admin() {
 
   // funcion apra cuando dan cli al inicio al perfil
   function handleDragStart(event) {
-    console.log(event)
     const { active, over } = event;
     //const name = active.data.current.name
     setProfileActive(active.data.current)
@@ -129,23 +145,21 @@ function Admin() {
       },
     })
   )
-
   return (
     <GlobalProvider>
-      <section className='section'>
+      {currentProfiles && (<section className='section'>
         <div className='config'>
-          <MenuLateral/>
+          <MenuLateral perfiles={currentProfiles} columns={columns} />
         </div>
         <div className='result'>
           <DndContext collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd} sensors={sensors}>
             <SortableContext items={columns}  >
-              {columns.map((column,index) => (
-                <Columns column={column} perfiles={currentProfiles} key={"column" + index}/>
+              {columns.map((column, index) => (
+                <Columns column={column} perfiles={currentProfiles} key={"column" + index} />
               ))}
             </SortableContext>
             {
               createPortal(
-
                 <DragOverlay>
                   <p className='moving'>{profileActive ? profileActive.name : ""}</p>
                 </DragOverlay>, document.body
@@ -153,9 +167,9 @@ function Admin() {
               )}
           </DndContext>
         </div>
-      </section>
-    </GlobalProvider>
+      </section>)}
 
+    </GlobalProvider>
   );
 }
 
