@@ -5,10 +5,10 @@ import User from './pages/user';
 import './App.css'
 function App() {
   return (
-  //  <>
+   <>
       <Admin />
-      // <User/>
-  //  </>
+      <User/>
+   </>
   )
 }
 
