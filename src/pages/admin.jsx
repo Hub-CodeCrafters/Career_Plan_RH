@@ -29,7 +29,7 @@ function Admin() {
   const [columns, setColums] = useState([]);
   useEffect(() => {
     setTimeout(() => {
-      fetch('https://json-server-gh.onrender.com/columns')
+      fetch('https://geoapps.esri.co/PDCJsonServer/columns')
         .then(res => {
           if (!res.ok) {
             throw Error('Error fetching users data');
@@ -43,10 +43,10 @@ function Admin() {
           console.log(err);
         });
     }, 1000);
-  }, ['https://json-server-gh.onrender.com/columns']);
+  }, ['https://geoapps.esri.co/PDCJsonServer/columns']);
 
   var { data: currentProfiles, error, isLoading, refetch, setData } = useDataFetch(
-    "https://json-server-gh.onrender.com/profiles"
+    "https://geoapps.esri.co/PDCJsonServer/profiles"
   );
 
   const [profileActive, setProfileActive] = useState(null);
@@ -76,7 +76,7 @@ function Admin() {
         updatedPerfiles.splice(destinationProfileIndex, 0, movedProfile);
         // actualizamos el estado con el nuevo array de perfiles modificados 
         var data = updatedPerfiles.filter((profile) => profile.column === indexProfilId);
-        fetch('https://json-server-gh.onrender.com/profiles/' + (indexProfilId), {
+        fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + (indexProfilId), {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ function Admin() {
         }).then(response => response.json())
           .then(newPerson => console.log(newPerson));
         data = updatedPerfiles.filter((profile) => profile.column === indexDestinationProfileId);
-        fetch('https://json-server-gh.onrender.com/profiles/' + (indexDestinationProfileId), {
+        fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + (indexDestinationProfileId), {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

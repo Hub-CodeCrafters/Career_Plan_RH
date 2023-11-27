@@ -30,7 +30,7 @@ const MenuLateral = ({ perfiles, columns }) => {
         var data = perfiles.filter((perfil) => perfil.column === +valores.nivel);
 
         document.getElementById("myForm").reset();
-        fetch('https://json-server-gh.onrender.com/profiles/' + valores.nivel, {
+        fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + valores.nivel, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ const MenuLateral = ({ perfiles, columns }) => {
         perfiles.splice(index, 1);
 
         var data = perfiles.filter((perfil) => perfil.column === profile.column);
-        fetch('https://json-server-gh.onrender.com/profiles/' + profile.column, {
+        fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + profile.column, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
