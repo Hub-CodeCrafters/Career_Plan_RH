@@ -72,17 +72,18 @@ const MenuLateral = ({ perfiles, columns }) => {
     return (
         <div style={{ height: '100vh' }}>
             {idSelected != 0 && <center>
-                <h1 style={{ color: "white", margin: "5vh 0 " }}>{perfil}</h1>
-                <button onClick={(e) => handleDelete()}>X</button>
+                <h1 style={{ color: "white", margin: "3vh 0 " }}>{perfil}</h1>
+                <button onClick={(e) => handleDelete()} style={{backgroundColor:"#dc3545", color:"white", padding:"10px", width:"auto", marginBottom:"5vh"}}>Eliminar este perfil</button>
                 <Rutas profiles={perfiles} columns={columns} />
             </center>}
             {idSelected == 0 && <center style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <form id="myForm">
                     <h1 style={{ color: "white", margin: "5vh 0 " }}>Agregar perfil</h1>
-                    <div style={{ width: "100%", display: "flex", gap: "1vw", margin: "1px" }}>
-                        <div style={{ width: "50%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <label>Elija el nivel</label>
-                            <select onChange={(e) => {
+                    <p style={{color:"white"}}>Seleccione el nivel y digite el nombre del perfil añadir.</p>
+                    <div style={{ width: "100%", display: "flex", margin: "1px" }}>
+
+                        <div style={{ width: "25%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                            <select style={{width:"100%", height:"100%"}} onChange={(e) => {
                                 valores.nivel = e.target.value;
                             }
                             }>
@@ -93,14 +94,14 @@ const MenuLateral = ({ perfiles, columns }) => {
                                 }
                             </select>
                         </div>
-                        <div style={{ width: "50%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <input type="text" id="name" name="name" style={{ width: 'inherit' }} onChange={(e) => {
+                        <div style={{ width: "75%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                            <input type="text" id="name" name="name" style={{ width: '100%', height:"100%"}} onChange={(e) => {
                                 valores.perfil = e.target.value;
                             }} />
                         </div>
 
                     </div>
-                    <button style={{ width: "auto", borderRadius: "5px", backgroundColor: "skyblue", color: "white", padding: "10px" }} onClick={addProfile}>Agregar perfil</button>
+                    <button style={{  width: "auto", borderRadius: "5px", backgroundColor: "#007bff", color: "white", padding: "10px",marginTop:"2vh" }} onClick={addProfile}>Agregar perfil</button>
                 </form>
             </center>}
 

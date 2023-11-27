@@ -6,7 +6,6 @@ import {
 import Columns from "../components/ColumnsUser.jsx/Columns"
 import GlobalProvider from '../state/global';
 import MenuRutas from '../components/MenuRutas/MenuRutas';
-import Setting from '../components/Setting';
 import RequisitosUser from '../components/RequisitosUser.jsx/RequisitosUser';
 import data from '../data/data';
 
