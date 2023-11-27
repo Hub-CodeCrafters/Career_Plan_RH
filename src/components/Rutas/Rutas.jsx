@@ -5,7 +5,7 @@ import { types } from "../../state/globalReducer";
 const Rutas = ({ profiles, columns }) => {
     const [state, dispatch] = useContext(GlobalContext)
     let { rutaSeleccionada, idSelected } = state;
-    console.log(rutaSeleccionada, idSelected)
+
     let routeProfiles = [];
     rutaSeleccionada.map((element) => {
         const perfil = profiles.find((perfil) => perfil.id == element);
@@ -20,18 +20,21 @@ const Rutas = ({ profiles, columns }) => {
 
     });
     const [newC, setNewC] = useState(false);
-    const [options, setOptions] = useState(profiles.filter((profile) => profile.column == 1));
+    const [options, setOptions] = useState(profiles?.filter((profile) => profile.column == 1));
     var valores = {
-        nivel: options[0].column,
+        nivel: options[0]?.column,
         perfil: options[0]
     };
     const handleAdd = (e) => {
-        valores = {
-            perfil: profiles.filter((profile) => profile.column == e)[0],
-            nivel: Number(e)
-        };
-        const profilesOptions = profiles.filter((profile) => profile.column == e);
-        setOptions(profilesOptions);
+        if (profiles.filter((profile) => profile.column == e)[0]) {
+            valores = {
+                perfil: profiles.filter((profile) => profile.column == e)[0],
+                nivel: Number(e)
+            };
+            const profilesOptions = profiles.filter((profile) => profile.column == e);
+            setOptions(profilesOptions);
+        }
+
     }
 
     const handleSave = (e) => {
@@ -77,7 +80,7 @@ const Rutas = ({ profiles, columns }) => {
 
     return (
         <>
-        <hr></hr>
+            <hr></hr>
             <section>
                 <div id="ruta-1">
                     {routeProfiles.map((profile, index) => (
@@ -87,16 +90,16 @@ const Rutas = ({ profiles, columns }) => {
                             </div>
                             <div style={{ width: "75%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
                                 {profile.name}
-                                <button onClick={(e) => handleDelete(profile.id)} style={{backgroundColor:"transparent", color:"rgb(220, 53, 69)", border:"none"}}>X</button>
+                                <button onClick={(e) => handleDelete(profile.id)} style={{ backgroundColor: "transparent", color: "rgb(220, 53, 69)", border: "none" }}>X</button>
                             </div>
                         </div>
                     ))}
                 </div>
-                {newC &&  <p style={{color:"white"}}>Seleccione el nivel y perfil</p>}
-                {newC && <div style={{ width: "100%", display: "flex", margin: "1px", marginTop:"2vh" }}>
-                    
+                {newC && <p style={{ color: "white" }}>Seleccione el nivel y perfil</p>}
+                {newC && <div style={{ width: "100%", display: "flex", margin: "1px", marginTop: "2vh" }}>
+
                     <div style={{ width: "25%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <select onChange={(e) => handleAdd(e.target.value)} style={{width:"100%", height:"100%"}}>
+                        <select onChange={(e) => handleAdd(e.target.value)} style={{ width: "100%", height: "100%" }}>
                             {
                                 columns.map((column, index) => (
                                     <option key={"opt" + index} value={column.id}>{column.name}</option>
@@ -105,7 +108,7 @@ const Rutas = ({ profiles, columns }) => {
                         </select>
                     </div>
                     <div style={{ width: "75%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <select id="select-dinamico" style={{ width: "100%", height:"100%" }} onChange={(e) => {
+                        <select id="select-dinamico" style={{ width: "100%", height: "100%" }} onChange={(e) => {
                             valores = {
                                 ...valores,
                                 perfil: profiles.find((perfil) => perfil.id == e.target.value)
@@ -120,8 +123,8 @@ const Rutas = ({ profiles, columns }) => {
                     </div>
 
                 </div>}
-                {newC && <button style={{ width: "auto", borderRadius: "5px", backgroundColor: "#007bff", color: "white", padding: "10px",marginTop:"2vh" }} onClick={handleSave}>Guardar</button>}
-                {!newC && <button style={{ width: "auto", borderRadius: "5px", backgroundColor: "#007bff", color: "white", padding: "10px",marginTop:"2vh" }} onClick={() => { setNewC(!newC) }}>Relacionar otro perfil</button>}
+                {newC && <button style={{ width: "auto", borderRadius: "5px", backgroundColor: "#007bff", color: "white", padding: "10px", marginTop: "2vh" }} onClick={handleSave}>Guardar</button>}
+                {!newC && <button style={{ width: "auto", borderRadius: "5px", backgroundColor: "#007bff", color: "white", padding: "10px", marginTop: "2vh" }} onClick={() => { setNewC(!newC) }}>Relacionar otro perfil</button>}
             </section>
         </>
     )
