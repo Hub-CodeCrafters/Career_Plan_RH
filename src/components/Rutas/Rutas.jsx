@@ -9,12 +9,15 @@ const Rutas = ({ profiles, columns }) => {
     let routeProfiles = [];
     rutaSeleccionada.map((element) => {
         const perfil = profiles.find((perfil) => perfil.id == element);
-        let item = {
-            column: perfil.column,
-            id: perfil.id,
-            name: perfil.name
-        };
-        routeProfiles.push(item)
+        if (perfil) {
+            let item = {
+                column: perfil.column,
+                id: perfil.id,
+                name: perfil.name
+            };
+            routeProfiles.push(item)
+        }
+
     });
     const [newC, setNewC] = useState(false);
     const [options, setOptions] = useState(profiles.filter((profile) => profile.column == 1));
@@ -45,7 +48,7 @@ const Rutas = ({ profiles, columns }) => {
             },
             body: JSON.stringify({
                 id: perfil.column,
-                data:data
+                data: data
             })
         }).then(response => response.json())
             .then(newPerson => console.log(newPerson));
@@ -65,7 +68,7 @@ const Rutas = ({ profiles, columns }) => {
             },
             body: JSON.stringify({
                 id: perfil.column,
-                data:data
+                data: data
             })
         }).then(response => response.json())
             .then(newPerson => console.log(newPerson));
