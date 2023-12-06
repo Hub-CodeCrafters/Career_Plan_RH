@@ -1,19 +1,21 @@
 const types = {
     changeId: 'change id',
     changeRutas: 'change rutas',
-    resetState: 'reset state'
+    resetState: 'reset state',
+    updateProfiles: 'update profiles'
 }
 
 const initialState = {
+    profiles: [],
     idSelected: 0,
-    perfil:"",
+    perfil: "",
     rutas: [],
     rutaSeleccionada: [],
     rutaActual: 0,
     estudios: [],
     experiencia: [],
-    habilidades : [],
-    competencias : []
+    habilidades: [],
+    competencias: []
 }
 
 const GlobalReducer = (state, action) => {
@@ -27,8 +29,8 @@ const GlobalReducer = (state, action) => {
                 estudios: action.payload.estudios,
                 experiencia: action.payload.experiencia,
                 habilidades: action.payload.habilidades,
-                competencias : action.payload.competencias,
-                perfil : action.payload.perfilName
+                competencias: action.payload.competencias,
+                perfil: action.payload.perfilName
             }
         case types.changeRutas:
             return {
@@ -38,8 +40,18 @@ const GlobalReducer = (state, action) => {
             }
         case types.resetState:
             return {
-                ...state,
+                profiles: action.payload,
+                idSelected: 0,
+                perfil: "",
+                rutas: [],
+                rutaSeleccionada: [],
+                rutaActual: 0,
                 ...initialState
+            }
+        case types.updateProfiles:
+            return {
+                ...state,
+                profiles: action.payload
             }
         default:
             return state
