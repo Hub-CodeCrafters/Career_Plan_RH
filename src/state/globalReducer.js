@@ -25,6 +25,7 @@ const GlobalReducer = (state, action) => {
                 ...state,
                 idSelected: action.payload.perfilId,
                 rutas: action.payload.rutasPerfil,
+                rutaActual: 0,
                 rutaSeleccionada: action.payload.rutasPerfil[0],
                 estudios: action.payload.estudios,
                 experiencia: action.payload.experiencia,

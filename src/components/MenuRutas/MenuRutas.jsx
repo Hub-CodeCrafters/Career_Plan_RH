@@ -1,21 +1,18 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { GlobalContext } from '../../state/global';
 import { types } from '../../state/globalReducer';
-export default function MenuRutas() {
+export default function MenuRutas({ruta}) {
     const [state, dispatch] = useContext(GlobalContext)
-    let { idSelected, rutas, perfil } = state
+    let { idSelected, rutas, perfil, rutaActual } = state
   
-    let [page, setPage] = useState(1)
-  
+    var [page, setPage] = useState(ruta+1)
+    useEffect(() => { setPage(ruta+1)}, [ruta] )
     const changeRuta = () => {
       if (page == rutas.length) {
         dispatch({ type: types.changeRutas, payload: 0 })
-        setPage(1)
       } else {
         dispatch({ type: types.changeRutas, payload: page++ })
-        setPage(page++)
       }
-  
     }
     return (
       <div >
