@@ -1,15 +1,17 @@
-import { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../../state/global";
+import { useEffect, useState } from "react";
 
 function Lines({idSelected,rutaSeleccionada, currentProfiles}) {
-    console.log("renderizando")
     var [page, setPage] = useState(currentProfiles)
     useEffect(() => { setPage(currentProfiles)}, [currentProfiles] )
     var seleccionado;
     const perfiles = [];
     const lines = [];
+    var object;
     rutaSeleccionada.forEach(element => {
-        perfiles.push(document.getElementById('perfil-' + element))
+        object = document.getElementById('perfil-' + element);
+        if(object){
+            perfiles.push(document.getElementById('perfil-' + element));
+        }
     });
 
     if (idSelected > 0) {
@@ -68,9 +70,6 @@ function Lines({idSelected,rutaSeleccionada, currentProfiles}) {
         }
         lines.push(style)
     }
-
-    console.log(lines)
-
 
     return (<div style={{ backgroundColor: 'rgba(0,0,0,0)', width: "100vw", height: "100vh", position: "absolute", pointerEvents: 'none' }} tabIndex={-1}>
         {lines && lines.map((line, index) => (

@@ -7,7 +7,6 @@ import Columns from "../components/ColumnsUser.jsx/Columns"
 import GlobalProvider from '../state/global';
 import MenuRutas from '../components/MenuRutas/MenuRutas';
 import RequisitosUser from '../components/RequisitosUser.jsx/RequisitosUser';
-import data from '../data/data';
 
 
 
@@ -42,7 +41,6 @@ function User() {
           <RequisitosUser />
         </div>
         <div className='result'>
-
           <SortableContext items={columns} >
             {columns.map((column) => (
               <Columns column={column} perfiles={perfiles} key={column.id} />

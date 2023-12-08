@@ -50,9 +50,26 @@ const GlobalReducer = (state, action) => {
                 ...initialState
             }
         case types.updateProfiles:
-            return {
-                ...state,
-                profiles: action.payload
+            if(action.payload.eliminarRuta){
+                return {
+                    ...state,
+                    rutaSeleccionada: action.payload.ruta,
+                    rutaActual: action.payload.indexRuta,
+                    profiles: action.payload.profiles
+                }
+            }else if(action.payload.nuevoIndex){
+                return {
+                    ...state,
+                    rutas: action.payload.nuevasRutas,
+                    rutaSeleccionada: action.payload.rutaSeleccionada,
+                    rutaActual: action.payload.nuevoIndex,
+                    profiles: action.payload.profiles
+                }
+            }else{
+                return {
+                    ...state,
+                    profiles: action.payload.profiles
+                }
             }
         default:
             return state

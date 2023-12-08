@@ -59,15 +59,27 @@ const Rutas = ({ profiles, columns }) => {
             })
         }).then(response => response.json())
             .then(newPerson => console.log(newPerson));
-        dispatch({ type: types.updateProfiles, payload: profiles });
+        dispatch({ type: types.updateProfiles, payload: {profiles} });
     }
 
     const handleDelete = (id) => {
-        console.log(rutaActual)
+        var eliminarRuta = false;
         const perfil = profiles.find((perfil) => perfil.id == idSelected);
         const index = perfil.routes[rutaActual].findIndex((element) => element === id);
-        console.log(index)
         perfil.routes[rutaActual].splice(index, 1);
+        var ruta = perfil.routes[rutaActual];
+        var indexRuta = rutaActual; 
+        if(perfil.routes[rutaActual].length === 0 && perfil.routes.length>1){
+            perfil.routes.splice(rutaActual,1);
+            eliminarRuta = true;
+            if(rutaActual === 0){
+                indexRuta = 0;
+                ruta = perfil.routes[rutaActual];
+            }else{
+                ruta = perfil.routes[rutaActual-1];
+                indexRuta = rutaActual-1;
+            }
+        }
         var data = profiles.filter((profile) => profile.column === perfil.column);
         fetch('http://localhost:3000/profiles/' + perfil.column, {
             mode: "cors",
@@ -81,14 +93,14 @@ const Rutas = ({ profiles, columns }) => {
             })
         }).then(response => response.json())
             .then(newPerson => console.log(newPerson));
-        dispatch({ type: types.updateProfiles, payload: profiles });
+        dispatch({ type: types.updateProfiles, payload: {profiles, eliminarRuta, ruta, indexRuta} });
     }
 
     return (
         <>
             <hr></hr>
             <section>
-                <MenuRutas ruta={rutaActual}/>
+                <MenuRutas ruta={rutaActual} profiles={profiles}/>
                 <div id="ruta-1">
                     {routeProfiles.map((profile, index) => (
                         <div style={{ width: "100%", display: "flex", gap: "1px", margin: "1px" }} key={"route" + index}>

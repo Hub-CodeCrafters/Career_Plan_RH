@@ -29,7 +29,7 @@ import { types } from '../state/globalReducer';
 function Admin() {
 
   const [state, dispatch] = useContext(GlobalContext);
-  const {rutaSeleccionada, idSelected} = state;
+  const {rutaSeleccionada, idSelected, rutaActual} = state;
   const [columns, setColums] = useState([]);
   useEffect(() => {
     setTimeout(() => {
@@ -110,7 +110,7 @@ function Admin() {
             console.log(newPerson)
             setProfileActive(active.data.current)
             setData(updatedPerfiles)
-            dispatch({ type: types.changeRutas, payload: 0 });
+            dispatch({ type: types.changeRutas, payload: rutaActual });
           });
       }
     }
