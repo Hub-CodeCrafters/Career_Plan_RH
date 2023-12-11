@@ -51,10 +51,12 @@ function Perfil({ perfil, column, display = true }) {
         transition,
         visibility: !display && 'hidden',
         width: !display && 0,
-        height: !display && 0
+        height: !display && 0,
+        zIndex: 99
     }
     return (
         <div
+            id={"perfil-"+perfil.id}
             ref={setNodeRef}
             {...attributes}
             {...listeners}

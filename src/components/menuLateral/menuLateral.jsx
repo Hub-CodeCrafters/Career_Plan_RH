@@ -3,6 +3,7 @@ import { useActivate } from "../../hooks/useActivateCard"
 import Rutas from "../Rutas/Rutas"
 import { GlobalContext } from "../../state/global"
 import { types } from "../../state/globalReducer"
+
 const MenuLateral = ({ perfiles, columns }) => {
     const [state, dispatch] = useContext(GlobalContext);
     let { idSelected, rutas, perfil, rutaSeleccionada } = state;
@@ -30,7 +31,7 @@ const MenuLateral = ({ perfiles, columns }) => {
         var data = perfiles.filter((perfil) => perfil.column === +valores.nivel);
 
         document.getElementById("myForm").reset();
-        fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + valores.nivel, {
+        fetch('http://localhost:3000/profiles/' + valores.nivel, {
             mode: "cors",
             method: 'PUT',
             headers: {
@@ -53,7 +54,7 @@ const MenuLateral = ({ perfiles, columns }) => {
         perfiles.splice(index, 1);
 
         var data = perfiles.filter((perfil) => perfil.column === profile.column);
-        fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + profile.column, {
+        fetch('http://localhost:3000/profiles/' + profile.column, {
             mode: "cors",
             method: 'PUT',
             headers: {

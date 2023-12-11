@@ -25,6 +25,7 @@ const GlobalReducer = (state, action) => {
                 ...state,
                 idSelected: action.payload.perfilId,
                 rutas: action.payload.rutasPerfil,
+                rutaActual: 0,
                 rutaSeleccionada: action.payload.rutasPerfil[0],
                 estudios: action.payload.estudios,
                 experiencia: action.payload.experiencia,
@@ -49,9 +50,26 @@ const GlobalReducer = (state, action) => {
                 ...initialState
             }
         case types.updateProfiles:
-            return {
-                ...state,
-                profiles: action.payload
+            if(action.payload.eliminarRuta){
+                return {
+                    ...state,
+                    rutaSeleccionada: action.payload.ruta,
+                    rutaActual: action.payload.indexRuta,
+                    profiles: action.payload.profiles
+                }
+            }else if(action.payload.nuevoIndex){
+                return {
+                    ...state,
+                    rutas: action.payload.nuevasRutas,
+                    rutaSeleccionada: action.payload.rutaSeleccionada,
+                    rutaActual: action.payload.nuevoIndex,
+                    profiles: action.payload.profiles
+                }
+            }else{
+                return {
+                    ...state,
+                    profiles: action.payload.profiles
+                }
             }
         default:
             return state

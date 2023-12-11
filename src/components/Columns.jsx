@@ -19,7 +19,7 @@ function Columns({ column, perfiles }) {
             >
                 <SortableContext items={profilesForColumn}>
                     <Perfil perfil={{
-                        id: column.id+500,
+                        id: column.id+1500,
                         columnid: column.id,
                         routes: [],
                         estudios: [],

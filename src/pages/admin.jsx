@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 
 import "../assets/admin.css"
@@ -21,15 +21,19 @@ import { createPortal } from 'react-dom';
 
 // data
 import MenuLateral from '../components/menuLateral/menuLateral';
-import GlobalProvider from "../state/global";
+import GlobalProvider, { GlobalContext } from "../state/global";
 import useDataFetch from '../hooks/useFetch';
+import Lines from '../components/Graphics/Lines';
+import { types } from '../state/globalReducer';
 
 function Admin() {
 
+  const [state, dispatch] = useContext(GlobalContext);
+  const {rutaSeleccionada, idSelected, rutaActual} = state;
   const [columns, setColums] = useState([]);
   useEffect(() => {
     setTimeout(() => {
-      fetch('https://geoapps.esri.co/PDCJsonServer/columns',{
+      fetch('http://localhost:3000/columns', {
         mode: "cors",
       })
         .then(res => {
@@ -45,10 +49,10 @@ function Admin() {
           console.log(err);
         });
     }, 1000);
-  }, ['https://geoapps.esri.co/PDCJsonServer/columns']);
+  }, ['http://localhost:3000/columns']);
 
   var { data: currentProfiles, error, isLoading, refetch, setData } = useDataFetch(
-    "https://geoapps.esri.co/PDCJsonServer/profiles"
+    "http://localhost:3000/profiles"
   );
 
   const [profileActive, setProfileActive] = useState(null);
@@ -78,7 +82,7 @@ function Admin() {
         updatedPerfiles.splice(destinationProfileIndex, 0, movedProfile);
         // actualizamos el estado con el nuevo array de perfiles modificados 
         var data = updatedPerfiles.filter((profile) => profile.column === indexProfilId);
-        fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + (indexProfilId), {
+        fetch('http://localhost:3000/profiles/' + (indexProfilId), {
           mode: "cors",
           method: 'PUT',
           headers: {
@@ -91,7 +95,7 @@ function Admin() {
         }).then(response => response.json())
           .then(newPerson => console.log(newPerson));
         data = updatedPerfiles.filter((profile) => profile.column === indexDestinationProfileId);
-        fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + (indexDestinationProfileId), {
+        fetch('http://localhost:3000/profiles/' + (indexDestinationProfileId), {
           mode: "cors",
           method: 'PUT',
           headers: {
@@ -102,8 +106,12 @@ function Admin() {
             data: data
           })
         }).then(response => response.json())
-          .then(newPerson => console.log(newPerson));
-        setData(updatedPerfiles);
+          .then(newPerson => {
+            console.log(newPerson)
+            setProfileActive(active.data.current)
+            setData(updatedPerfiles)
+            dispatch({ type: types.changeRutas, payload: rutaActual });
+          });
       }
     }
 
@@ -128,7 +136,8 @@ function Admin() {
           const [movedProfile] = updatedPerfiles[indexProfilId].splice(ProfileIndex, 1);
           updatedPerfiles[destinationColumnId - 1].push(movedProfile);
           // // actualizamos el estado con el nuevo array de perfiles modificados 
-          setData(updatedPerfiles);
+          var data = updatedPerfiles.slice();
+          setData(data);
         }
       }
     }
@@ -150,9 +159,35 @@ function Admin() {
     })
   )
   return (
-    <GlobalProvider>
+    // <GlobalProvider>
+    //   {currentProfiles && (<section className='section'>
+    //     <Lines perfiles2={currentProfiles}/>
+    //     <div className='config' style={{zIndex: 99}}>
+    //       <MenuLateral perfiles={currentProfiles} columns={columns} />
+    //     </div>
+    //     <div className='result'>
+    //       <DndContext collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd} sensors={sensors}>
+    //         <SortableContext items={columns}  >
+    //           {columns.map((column, index) => (
+    //             <Columns column={column} perfiles={currentProfiles} key={"column" + index} />
+    //           ))}
+    //         </SortableContext>
+    //         {
+    //           createPortal(
+    //             <DragOverlay>
+    //               <p className='moving'>{profileActive ? profileActive.name : ""}</p>
+    //             </DragOverlay>, document.body
+
+    //           )}
+    //       </DndContext>
+    //     </div>
+    //   </section>)}
+
+    // </GlobalProvider>
+    <>
       {currentProfiles && (<section className='section'>
-        <div className='config'>
+        <Lines rutaSeleccionada={rutaSeleccionada} idSelected={idSelected} currentProfiles={currentProfiles}/>
+        <div className='config' style={{ zIndex: 99 }}>
           <MenuLateral perfiles={currentProfiles} columns={columns} />
         </div>
         <div className='result'>
@@ -172,8 +207,7 @@ function Admin() {
           </DndContext>
         </div>
       </section>)}
-
-    </GlobalProvider>
+    </>
   );
 }
 

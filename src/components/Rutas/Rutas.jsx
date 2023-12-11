@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../state/global";
 import { types } from "../../state/globalReducer";
+import MenuRutas from "../MenuRutas/MenuRutas";
 
 const Rutas = ({ profiles, columns }) => {
-    const [state, dispatch] = useContext(GlobalContext)
-    let { rutaSeleccionada, idSelected } = state;
+    const [state, dispatch] = useContext(GlobalContext);
+    let { rutaSeleccionada, idSelected, rutaActual} = state;
 
     let routeProfiles = [];
     rutaSeleccionada.map((element) => {
@@ -41,12 +42,12 @@ const Rutas = ({ profiles, columns }) => {
 
     const handleSave = (e) => {
         const perfil = profiles.find((perfil) => perfil.id == idSelected);
-        perfil.routes[0].push(valores.perfil.id);
+        perfil.routes[rutaActual].push(valores.perfil.id);
         setNewC(false);
         setOptions(profiles.filter((profile) => profile.column == 1));
 
         var data = profiles.filter((profile) => profile.column === perfil.column);
-        fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + perfil.column, {
+        fetch('http://localhost:3000/profiles/' + perfil.column, {
             mode: "cors",
             method: 'PUT',
             headers: {
@@ -58,16 +59,29 @@ const Rutas = ({ profiles, columns }) => {
             })
         }).then(response => response.json())
             .then(newPerson => console.log(newPerson));
-        dispatch({ type: types.updateProfiles, payload: profiles });
+        dispatch({ type: types.updateProfiles, payload: {profiles} });
     }
 
     const handleDelete = (id) => {
+        var eliminarRuta = false;
         const perfil = profiles.find((perfil) => perfil.id == idSelected);
-        const index = perfil.routes[0].findIndex((element) => element === id);
-        console.log(index)
-        perfil.routes[0].splice(index, 1);
+        const index = perfil.routes[rutaActual].findIndex((element) => element === id);
+        perfil.routes[rutaActual].splice(index, 1);
+        var ruta = perfil.routes[rutaActual];
+        var indexRuta = rutaActual; 
+        if(perfil.routes[rutaActual].length === 0 && perfil.routes.length>1){
+            perfil.routes.splice(rutaActual,1);
+            eliminarRuta = true;
+            if(rutaActual === 0){
+                indexRuta = 0;
+                ruta = perfil.routes[rutaActual];
+            }else{
+                ruta = perfil.routes[rutaActual-1];
+                indexRuta = rutaActual-1;
+            }
+        }
         var data = profiles.filter((profile) => profile.column === perfil.column);
-        fetch('https://geoapps.esri.co/PDCJsonServer/profiles/' + perfil.column, {
+        fetch('http://localhost:3000/profiles/' + perfil.column, {
             mode: "cors",
             method: 'PUT',
             headers: {
@@ -79,13 +93,14 @@ const Rutas = ({ profiles, columns }) => {
             })
         }).then(response => response.json())
             .then(newPerson => console.log(newPerson));
-        dispatch({ type: types.updateProfiles, payload: profiles });
+        dispatch({ type: types.updateProfiles, payload: {profiles, eliminarRuta, ruta, indexRuta} });
     }
 
     return (
         <>
             <hr></hr>
             <section>
+                <MenuRutas ruta={rutaActual} profiles={profiles}/>
                 <div id="ruta-1">
                     {routeProfiles.map((profile, index) => (
                         <div style={{ width: "100%", display: "flex", gap: "1px", margin: "1px" }} key={"route" + index}>

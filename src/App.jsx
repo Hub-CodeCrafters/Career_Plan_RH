@@ -3,9 +3,13 @@ import Admin from './pages/admin';
 import User from './pages/user';
 
 import './App.css'
+import GlobalProvider from './state/global';
 function App() {
   return (
-    <Admin />
+    <GlobalProvider>
+      <Admin />
+    </GlobalProvider>
+    
     //  <User/> 
   )
 }
