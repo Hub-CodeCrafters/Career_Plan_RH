@@ -68,7 +68,6 @@ function Lines({idSelected,rutaSeleccionada, currentProfiles}) {
                 position: "absolute",
                 backgroundColor: "green",
                 height: "10px",
-                zIndex: 999,
             }
             lines.push(style)
         }

@@ -1,6 +1,8 @@
 
 .activate{
     background-color: yellow;
+    opacity: 1 !important;
+
 }
 .activate-r{
     background-color: aqua;

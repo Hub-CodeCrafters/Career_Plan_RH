@@ -8,6 +8,7 @@ import { types } from "../state/globalReducer";
 function Perfil({ perfil, column, display = true }) {
     // let { activate, handleActivate } = useActivate();
     let [activate, setActivate] = useState(true)
+    
     const handleActivate = () => setActivate(!activate)
 
     const [state, dispatch] = useContext(GlobalContext);
@@ -52,21 +53,41 @@ function Perfil({ perfil, column, display = true }) {
         visibility: !display && 'hidden',
         width: !display && 0,
         height: !display && 0,
-        zIndex: 99
+        zIndex: 99,
+        
     }
     return (
-        <div
-            id={"perfil-"+perfil.id}
-            ref={setNodeRef}
-            {...attributes}
-            {...listeners}
-            style={style}
-            className={`perfil ${idSelected === perfil.id ? "activate" : "" || rutaSeleccionada?.includes(perfil.id) ? "activate-r" : ""}`}
-            onClick={onClick}
-        >
-            <span className="perfilName">{perfil.name}</span>
-
-        </div>
+        <>
+            {idSelected ? (
+                <div
+                    id={"perfil-" + perfil.id}
+                    ref={setNodeRef}
+                    {...attributes}
+                    {...listeners}
+                    style={style}
+                    className={`perfil ${
+                        idSelected === perfil.id ? "activate" : ""
+                    } ${rutaSeleccionada?.includes(perfil.id) ? "activate-r" : "noActivate-r"}`}
+                    onClick={onClick}
+                >
+                    <span className="perfilName">{perfil.name}</span>
+                </div>
+            ) : (
+                <div
+                    id={"perfil-" + perfil.id}
+                    ref={setNodeRef}
+                    {...attributes}
+                    {...listeners}
+                    style={style}
+                    className={`perfil ${
+                        idSelected === perfil.id ? "activate" : ""
+                    } ${rutaSeleccionada?.includes(perfil.id) ? "activate-r" : ""}`}
+                    onClick={onClick}
+                >
+                    <span className="perfilName">{perfil.name}</span>
+                </div>
+            )}
+        </>
     );
 }
 
