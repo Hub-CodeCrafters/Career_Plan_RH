@@ -61,7 +61,7 @@ function Perfil({ perfil, column, display = true }) {
             {...attributes}
             {...listeners}
             style={style}
-            className={`perfil ${idSelected === perfil.id ? "activate" : "" || rutaSeleccionada?.includes(perfil.id) ? "activate-r" : "noActivate-r"}`}
+            className={`perfil ${idSelected === perfil.id ? "activate" : "" || rutaSeleccionada?.includes(perfil.id) ? "activate-r" : ""}`}
             onClick={onClick}
         >
             <span className="perfilName">{perfil.name}</span>

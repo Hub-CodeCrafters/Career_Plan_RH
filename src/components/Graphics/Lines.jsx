@@ -67,7 +67,8 @@ function Lines({idSelected,rutaSeleccionada, currentProfiles}) {
                 left: posax - displacement + (width/2) +  "px",
                 position: "absolute",
                 backgroundColor: "green",
-                height: "10px"
+                height: "10px",
+                zIndex: 999,
             }
             lines.push(style)
         }

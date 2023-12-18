@@ -5,6 +5,8 @@
 .activate-r{
     background-color: aqua;
 }
+
+/* esta opacidad carga siempre los perfiles oscuros  */
 .noActivate-r{
     opacity: 0.2;
 }
