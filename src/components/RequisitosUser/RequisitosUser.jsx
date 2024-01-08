@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
-import { GlobalContext } from '../../Contexts/global';
-import { types } from '../../Contexts/globalReducer';
+import { GlobalContext } from '../../contexts/global';
+import { types } from '../../contexts/globalReducer';
 const RequisitosUser = () => {
     const [state, dispatch] = useContext(GlobalContext)
     let { idSelected, estudios, experiencia, habilidades, competencias } = state

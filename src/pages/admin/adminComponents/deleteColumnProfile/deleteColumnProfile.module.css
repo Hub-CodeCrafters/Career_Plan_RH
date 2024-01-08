@@ -1,0 +1,16 @@
+.selectProfile{
+    color: #ADD8E6;
+
+}
+.nameProfile{
+  color: white;
+}
+
+.buttonDelete{   
+    background-color:#dc3545 ;
+    color: white;
+    padding: 10px;
+    width: auto;
+    margin-bottom: 5vh;
+    border-radius: 5rem;
+}

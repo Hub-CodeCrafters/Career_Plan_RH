@@ -2,7 +2,9 @@ const types = {
     changeId: 'change id',
     changeRutas: 'change rutas',
     resetState: 'reset state',
-    updateProfiles: 'update profiles'
+    updateProfiles: 'update profiles',
+    allProfiles: 'all profiles',
+    allColumns: 'all columns',
 }
 
 const initialState = {
@@ -15,11 +17,29 @@ const initialState = {
     estudios: [],
     experiencia: [],
     habilidades: [],
-    competencias: []
+    competencias: [],
+    columns: [],
 }
 
 const GlobalReducer = (state, action) => {
+
     switch (action.type) {
+
+        case types.allProfiles:
+
+        return {
+            // investiagr por que  se hace una copia de una rray al estado y no se hace directamente
+            ...state,
+            profiles: action.payload
+        }
+        case types.allColumns:
+            
+        return {
+               // investiagr por que  se hace una copia de una rray al estado y no se hace directamente
+            ...state,
+            columns: action.payload
+        }
+
         case types.changeId:
             return {
                 ...state,

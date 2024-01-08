@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../../state/global";
-import { types } from "../../state/globalReducer";
+import { GlobalContext } from "../../Contexts/global";
+import { types } from "../../Contexts/globalReducer";
 import MenuRutas from "../MenuRutas/MenuRutas";
 
 const Rutas = ({ profiles, columns }) => {
@@ -59,6 +59,7 @@ const Rutas = ({ profiles, columns }) => {
             })
         }).then(response => response.json())
             .then(newPerson => console.log(newPerson));
+            
         dispatch({ type: types.updateProfiles, payload: {profiles} });
     }
 

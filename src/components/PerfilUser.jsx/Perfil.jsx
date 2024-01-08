@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { useActivate } from "../../hooks/useActivateCard";
 
 
-import { GlobalContext } from "../../state/global";
-import { types } from "../../state/globalReducer";
+import { GlobalContext } from "../../Contexts/global";
+import { types } from "../../Contexts/globalReducer";
 
 
 function Perfil({ perfil }) {

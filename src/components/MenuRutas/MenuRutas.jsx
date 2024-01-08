@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
-import { GlobalContext } from '../../state/global';
-import { types } from '../../state/globalReducer';
+import { GlobalContext } from '../../Contexts/global';
+import { types } from '../../Contexts/globalReducer';
 export default function MenuRutas({ ruta, profiles }) {
   const [state, dispatch] = useContext(GlobalContext)
   let { idSelected, rutas, perfil } = state
