@@ -9,16 +9,18 @@ const types = {
 
 const initialState = {
     profiles: [],
-    idSelected: 0,
-    perfil: "",
-    rutas: [],
-    rutaSeleccionada: [],
-    rutaActual: 0,
-    estudios: [],
-    experiencia: [],
-    habilidades: [],
-    competencias: [],
     columns: [],
+    profileSelect: null,
+    // esto no creo necesario ya que es lo que esta con cada perfil podemos consultar cada perfil  y obtenemos esta infomacion solo con  idSelected
+    // perfil: "",
+    // rutas: [],
+    // rutaSeleccionada: [],
+    // rutaActual: 0,
+    // estudios: [],
+    // experiencia: [],
+    // habilidades: [],
+    // competencias: [],
+
 }
 
 const GlobalReducer = (state, action) => {
@@ -43,15 +45,16 @@ const GlobalReducer = (state, action) => {
         case types.changeId:
             return {
                 ...state,
-                idSelected: action.payload.perfilId,
-                rutas: action.payload.rutasPerfil,
-                rutaActual: 0,
-                rutaSeleccionada: action.payload.rutasPerfil[0],
-                estudios: action.payload.estudios,
-                experiencia: action.payload.experiencia,
-                habilidades: action.payload.habilidades,
-                competencias: action.payload.competencias,
-                perfil: action.payload.perfilName
+                profileSelect: action.payload,
+                // por el momento solo  actualizamos el id ya que la otra informacion esta en el esatdo con los perfiles no veo necesario  guardar esto cuando ya esta en el estado
+                // rutas: action.payload.rutasPerfil,
+                // rutaActual: 0,
+                // rutaSeleccionada: action.payload.rutasPerfil[0],
+                // estudios: action.payload.estudios,
+                // experiencia: action.payload.experiencia,
+                // habilidades: action.payload.habilidades,
+                // competencias: action.payload.competencias,
+                // perfil: action.payload.perfilName
             }
         case types.changeRutas:
             return {
@@ -61,13 +64,15 @@ const GlobalReducer = (state, action) => {
             }
         case types.resetState:
             return {
-                profiles: action.payload,
-                idSelected: 0,
-                perfil: "",
-                rutas: [],
-                rutaSeleccionada: [],
-                rutaActual: 0,
-                ...initialState
+                ...state,
+                profileSelect: action.payload,
+                // esto lo lo creo necesario por el momento
+                // perfil: "",
+                // rutas: [],
+                // rutaSeleccionada: [],
+                // rutaActual: 0,
+                // profiles: action.payload,
+                // ...initialState
             }
         case types.updateProfiles:
             if(action.payload.eliminarRuta){

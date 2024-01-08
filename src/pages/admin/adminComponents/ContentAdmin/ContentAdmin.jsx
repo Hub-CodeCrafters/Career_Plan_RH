@@ -40,18 +40,28 @@ import {
   updateProfilesColumn,
   updateAllProfiles
 } from "../../../../services/profileServices";
+import { addSelectedProfileToGlobalState } from "../../../../utils/generalUtils/addSelectedProfileToGlobalState";
 
 function Content() {
   const [state, dispatch] = useContext(GlobalContext);
   // Accedes a la propiedad profiles desde el estado global
   const { profiles, columns } = state;
-
   const [activeId, setActiveId] = useState(false);
+  const [clickAcativate, setclickAcativate] = useState(false);
 
   // funcion apra cuando dan cli al inicio al perfil
   function handleDragStart(event) {
     const { active, over } = event;
     setActiveId(true);
+    //  logica para quitar select de perfil al dar clic o agregar select se puedo modularizar y seapra en untils sic rece
+    if (clickAcativate === false || active.id !== state.profileSelect.id) {
+      addSelectedProfileToGlobalState(profiles, active.id, dispatch, types);
+      setclickAcativate(true);
+    }
+    if (clickAcativate === true && active.id === state.profileSelect.id) {
+      dispatch({ type: types.resetState, payload: null });
+      setclickAcativate(false);
+    }
   }
 
   function habldeDragOver(event) {
@@ -62,8 +72,8 @@ function Content() {
 
   const handleDragEnd = (event) => {
     const updatedProfiles = profiles;
-    console.log(updatedProfiles);
     updateAllProfiles(updatedProfiles, getToken());
+    setActiveId(false);
   };
   return (
     <div className={style.result}>

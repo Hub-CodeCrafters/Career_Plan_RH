@@ -100,32 +100,40 @@ import {
 // }
 
 function PerfilAdmin({ profile }) {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
-    useSortable({
-      id: profile.id,
-      data: {
-        type: "perfil",
-        name: profile.name,
-        profileColumn: profile.column
-      }
-    });
+
+
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging
+  } = useSortable({
+    id: profile.id,
+    data: {
+      type: "perfil",
+      name: profile.name,
+      profileColumn: profile.column
+    }
+  });
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    zIndex: 99,
+    zIndex: 199,
     opacity: isDragging ? 0.5 : 1,
     boxShadow: isDragging ? "0px 0px 10px 5px rgba(0,0,0,0.5)" : ""
   };
 
   return (
     <div
-      ref={setNodeRef}
       id={profile.id}
-      {...attributes}
-      {...listeners}
       style={style}
       className={Style.perfil}
+      ref={setNodeRef}
+      {...attributes}
+      {...listeners}
     >
       <span className={Style.perfilName}>{profile.name}</span>
     </div>

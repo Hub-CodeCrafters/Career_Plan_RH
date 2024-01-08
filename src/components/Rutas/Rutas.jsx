@@ -3,10 +3,12 @@ import { GlobalContext } from "../../Contexts/global";
 import { types } from "../../Contexts/globalReducer";
 import MenuRutas from "../MenuRutas/MenuRutas";
 
-const Rutas = ({ profiles, columns }) => {
-    const [state, dispatch] = useContext(GlobalContext);
-    let { rutaSeleccionada, idSelected, rutaActual} = state;
+const Rutas = () => {
 
+    const [state, dispatch] = useContext(GlobalContext);
+    let { rutaSeleccionada, profileSelect, rutaActual, profiles,columns} = state;
+
+    // esto saca las rutas del perfile selecionado
     let routeProfiles = [];
     rutaSeleccionada.map((element) => {
         const perfil = profiles.find((perfil) => perfil.id == element);
@@ -20,12 +22,17 @@ const Rutas = ({ profiles, columns }) => {
         }
 
     });
+
+
+    // 
     const [newC, setNewC] = useState(false);
     const [options, setOptions] = useState(profiles?.filter((profile) => profile.column == 1));
     var valores = {
         nivel: options[0]?.column,
         perfil: options[0]
     };
+
+    // esto manjeja el agregar 
     const handleAdd = (e) => {
         if (profiles.filter((profile) => profile.column == e)[0]) {
             valores = {
@@ -101,7 +108,7 @@ const Rutas = ({ profiles, columns }) => {
         <>
             <hr></hr>
             <section>
-                <MenuRutas ruta={rutaActual} profiles={profiles}/>
+                {/* <MenuRutas ruta={rutaActual} profiles={profiles}/> */}
                 <div id="ruta-1">
                     {routeProfiles.map((profile, index) => (
                         <div style={{ width: "100%", display: "flex", gap: "1px", margin: "1px" }} key={"route" + index}>

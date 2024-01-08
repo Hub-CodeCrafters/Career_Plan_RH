@@ -10,17 +10,17 @@ import DeleteColumnProfile from "../deleteColumnProfile/deleteColumnProfile";
 
 const MenuLateral = ({ perfiles, columns }) => {
   const [state, dispatch] = useContext(GlobalContext);
-  const { idSelected } = state;
+  const {profileSelect} = state;
 
   return (
     <div className={style.menuLateralPrincipal}>
-      {idSelected == 0 && (
+      {profileSelect === null   && (
         <AddColumnProfile/>
       )}
-      {idSelected != 0 && (
+      {profileSelect !== null  && (
         <>
-          <DeleteColumnProfile perfiles={perfiles} columns={columns} />
-          <Rutas profiles={perfiles} columns={columns} />
+          <DeleteColumnProfile/>
+          {/* <Rutas/> */}
         </>
       )}
      

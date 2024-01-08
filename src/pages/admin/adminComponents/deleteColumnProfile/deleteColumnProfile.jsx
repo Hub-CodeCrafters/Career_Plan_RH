@@ -4,29 +4,32 @@ import { types } from "../../../../Contexts/globalReducer"
 
 import style from "./deleteColumnProfile.module.css"
 
-import { updateProfilesColumn} from "../../../../services/profileServices"
+import { updateAllProfiles, updateProfilesColumn} from "../../../../services/profileServices"
+import { getToken } from "../../../../utils/generalUtils/tokenUtils"
 
-const DeleteColumnProfile = ({ perfiles, columns }) => {
+const DeleteColumnProfile = () => {
 
     const [state, dispatch] = useContext(GlobalContext);
-    const { idSelected, perfil } = state;
+    const { profileSelect,profiles } = state;
+
 
     const handleDelete = () => {
-        const profile = perfiles.find((profile) => profile.id === idSelected)
-        const index = perfiles.findIndex((profile) => profile.id === idSelected);
-        perfiles.splice(index, 1);
 
-        var data = perfiles.filter((perfil) => perfil.column === profile.column);
-       
-        updateProfilesColumn(profile.column, data)
-      
-        dispatch({ type: types.resetState, payload: state.profiles });
-        dispatch({ type: types.updateProfiles, payload: perfiles });
+        const updatedProfiles = JSON.parse(JSON.stringify(profiles));
+
+        const profile = updatedProfiles.find((profile) => profile.id === profileSelect.id)
+
+        const index = updatedProfiles.findIndex((profile) => profile.id === profileSelect.id);
+        updatedProfiles.splice(index, 1);     
+
+        dispatch({ type: types.allProfiles, payload: updatedProfiles });
+        dispatch({ type: types.resetState, payload: null });
+        updateAllProfiles(updatedProfiles,getToken());
     }
     return (
         <div>
             <h3 className={style.selectProfile}>Perfil Selecionado </h3>
-            <h3 className={style.nameProfile}>{perfil}</h3>
+            <h3 className={style.nameProfile}>{profileSelect.name}</h3>
             <button className={style.buttonDelete} onClick={(e) => handleDelete()}>Eliminar este perfil</button>  
         </div>
 
