@@ -5,7 +5,7 @@ const addSelectedProfileToGlobalState= (profiles,profileId,dispatch,types) => {
 
     if(selectedProfile){
         dispatch({
-            type:types.changeId,
+            type:types.profileSelect,
             payload: selectedProfile
         })
     }else{

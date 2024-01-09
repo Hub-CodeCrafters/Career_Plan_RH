@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import Rutas from "../../../../components/Rutas/Rutas";
+import AssociateRoutes from "../AssociateRoutes/AssociateRoutes";
 import { GlobalContext } from "../../../../Contexts/global";
 import { Link } from "react-router-dom";
 
@@ -20,7 +20,7 @@ const MenuLateral = ({ perfiles, columns }) => {
       {profileSelect !== null  && (
         <>
           <DeleteColumnProfile/>
-          {/* <Rutas/> */}
+          <AssociateRoutes/>
         </>
       )}
      

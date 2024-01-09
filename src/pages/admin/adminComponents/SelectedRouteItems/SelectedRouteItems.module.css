@@ -1,0 +1,45 @@
+
+.routes {
+    width: 905;
+    height:auto;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.route {
+    width: 100%;
+    display: flex;
+    gap: 1px;
+    margin: 1px;
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+}
+.routeColumn{
+    width: 15%;
+    height: 2rem; 
+    background-color: red; 
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(234, 222, 222, 0.75);
+}
+.routeName{
+    background-color: #CAE8FF;
+    width: 80%;
+    height: 2rem;
+    /* background-color: green; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    border: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(234, 222, 222, 0.75);
+}

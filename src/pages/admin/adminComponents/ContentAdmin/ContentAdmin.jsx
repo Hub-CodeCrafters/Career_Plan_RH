@@ -72,7 +72,10 @@ function Content() {
 
   const handleDragEnd = (event) => {
     const updatedProfiles = profiles;
-    updateAllProfiles(updatedProfiles, getToken());
+    if(updatedProfiles){
+      updateAllProfiles(updatedProfiles, getToken());
+    }
+ 
     setActiveId(false);
   };
   return (
