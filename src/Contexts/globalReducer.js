@@ -5,6 +5,7 @@ const types = {
     updateProfiles: 'update profiles',
     allProfiles: 'all profiles',
     allColumns: 'all columns',
+    updateRutaSelect: 'update ruta select'
 }
 
 const initialState = {
@@ -12,7 +13,7 @@ const initialState = {
     columns: [],
     profileSelect: null,
     routeSelect: [],
-    // rutaActual: 0,
+    rutaActual: 0,
     // // esto no creo necesario ya que es lo que esta con cada perfil podemos consultar cada perfil  y obtenemos esta infomacion solo con  idSelected
     // perfil: "",
     // rutas: [],
@@ -48,15 +49,21 @@ const GlobalReducer = (state, action) => {
                 ...state,
                 profileSelect: action.payload,
                 routeSelect: action.payload.routes[0],
+                rutaActual: 0,
                 // por el momento solo  actualizamos el id ya que la otra informacion esta en el esatdo con los perfiles no veo necesario  guardar esto cuando ya esta en el estado
                 // rutas: action.payload.rutasPerfil,
-                // rutaActual: 0,
+             
                 // rutaSeleccionada: action.payload.rutasPerfil[0],
                 // estudios: action.payload.estudios,
                 // experiencia: action.payload.experiencia,
                 // habilidades: action.payload.habilidades,
                 // competencias: action.payload.competencias,
                 // perfil: action.payload.perfilName
+            }
+        case types.updateRutaSelect:   
+            return {
+                ...state,
+                routeSelect: action.payload
             }
         case types.changeRutas:
             return {
