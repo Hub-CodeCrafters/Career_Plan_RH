@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-
-
 import style from "../admin/admin.module.css"
 
 
@@ -17,6 +15,10 @@ function User() {
 
   const [state, dispatch] = useContext(GlobalContext);
   const {profiles,columns} = state;
+  
+  useEffect(() => {
+    dispatch({ type:types.paginaActual, payload:"user"})
+  },[])
 
   return (
     <>

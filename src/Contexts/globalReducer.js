@@ -1,11 +1,10 @@
 const types = {
     profileSelect: 'profileSelect',
-    changeRutas: 'change rutas',
-    resetState: 'reset state',
-    updateProfiles: 'update profiles',
+    changeRutaActual: 'change ruta Actual',
     allProfiles: 'all profiles',
     allColumns: 'all columns',
-    updateRutaSelect: 'update ruta select'
+    updateRutaSelect: 'update ruta select',
+    paginaActual: 'pagina actual'
 }
 
 const initialState = {
@@ -13,21 +12,18 @@ const initialState = {
     columns: [],
     profileSelect: null,
     routeSelect: [],
-    rutaActual: 0,
-    // // esto no creo necesario ya que es lo que esta con cada perfil podemos consultar cada perfil  y obtenemos esta infomacion solo con  idSelected
-    // perfil: "",
-    // rutas: [],
-    // rutaSeleccionada: [],
-    // estudios: [],
-    // experiencia: [],
-    // habilidades: [],
-    // competencias: [],
-
+    rutaActual:null,
+    paginaActual: null,
 }
 
 const GlobalReducer = (state, action) => {
 
     switch (action.type) {
+        case types.paginaActual:
+            return {
+                ...state,
+                paginaActual: action.payload
+            }
 
         case types.allProfiles:
 
@@ -48,62 +44,20 @@ const GlobalReducer = (state, action) => {
             return {
                 ...state,
                 profileSelect: action.payload,
-                routeSelect: action.payload.routes[0],
-                rutaActual: 0,
-                // por el momento solo  actualizamos el id ya que la otra informacion esta en el esatdo con los perfiles no veo necesario  guardar esto cuando ya esta en el estado
-                // rutas: action.payload.rutasPerfil,
-             
-                // rutaSeleccionada: action.payload.rutasPerfil[0],
-                // estudios: action.payload.estudios,
-                // experiencia: action.payload.experiencia,
-                // habilidades: action.payload.habilidades,
-                // competencias: action.payload.competencias,
-                // perfil: action.payload.perfilName
+                rutaActual: state.rutaActual ?? 0,
+                routeSelect: action.payload.routes[state.rutaActual ?? 0],
             }
         case types.updateRutaSelect:   
             return {
                 ...state,
-                routeSelect: action.payload
+                routeSelect: action.payload,   
             }
-        case types.changeRutas:
+    
+        case types.changeRutaActual:
             return {
                 ...state,
-                rutaSeleccionada: state.rutas[action.payload],
-                rutaActual: action.payload
-            }
-        case types.resetState:
-            return {
-                ...state,
-                profileSelect: action.payload,
-                // esto lo lo creo necesario por el momento
-                // perfil: "",
-                // rutas: [],
-                // rutaSeleccionada: [],
-                // rutaActual: 0,
-                // profiles: action.payload,
-                // ...initialState
-            }
-        case types.updateProfiles:
-            if(action.payload.eliminarRuta){
-                return {
-                    ...state,
-                    rutaSeleccionada: action.payload.ruta,
-                    rutaActual: action.payload.indexRuta,
-                    profiles: action.payload.profiles
-                }
-            }else if(action.payload.nuevoIndex){
-                return {
-                    ...state,
-                    rutas: action.payload.nuevasRutas,
-                    rutaSeleccionada: action.payload.rutaSeleccionada,
-                    rutaActual: action.payload.nuevoIndex,
-                    profiles: action.payload.profiles
-                }
-            }else{
-                return {
-                    ...state,
-                    profiles: action.payload.profiles
-                }
+                rutaActual: action.payload,
+
             }
         default:
             return state

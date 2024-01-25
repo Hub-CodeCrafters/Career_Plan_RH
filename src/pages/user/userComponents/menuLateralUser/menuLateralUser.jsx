@@ -1,7 +1,7 @@
 
 import { getToken, isTokenExpired } from "../../../../utils/generalUtils/tokenUtils"
 import { useNavigate } from "react-router-dom"
-
+import MenuRutas from "../../../../components/MenuRutas/MenuRutas";
 // CSS
 import style from "./menuLateralUser.module.css"
 
@@ -19,11 +19,17 @@ const MenuLateralUser = ({ perfiles, columns }) => {
     }
 
     return (
+        <>
         <div className={style.login}>
             <button className={style.loginButton} onClick={redirectToAdmin}>
             Acceso de Administrador
             </button>
+
         </div>
+            <MenuRutas/>
+    
+        </>
+                
     );
 }
 

@@ -8,7 +8,7 @@ import style from "./AssociateRoutes.module.css";
 const AssociateRoutes = () => {
   const [state, dispatch] = useContext(GlobalContext);
   // let { rutaSeleccionada, profileSelect, rutaActual, profiles,columns} = state;
-  const { profileSelect, rutaActual, profiles, columns,routeSelect } = state;
+  const { rutaActual, profiles } = state;
 
   // // esto saca las rutas del perfile selecionado
   // let routeProfiles = [];
@@ -108,12 +108,12 @@ const AssociateRoutes = () => {
   // }
 
   return (
-
     <section className={style.Section}>
-     <hr></hr>
-     <SelectedRouteItems />
-    {/* <MenuRutas ruta={rutaActual} profiles={profiles}/> */}
-       {/* {newC && <p style={{ color: "white" }}>Seleccione el nivel y perfil</p>}
+      <hr></hr>
+      <MenuRutas />
+      <SelectedRouteItems />
+   
+      {/* {newC && <p style={{ color: "white" }}>Seleccione el nivel y perfil</p>}
                 {newC && <div style={{ width: "100%", display: "flex", margin: "1px", marginTop: "2vh" }}>
 
                     <div style={{ width: "25%", backgroundColor: "white", minHeight: "60px", display: "flex", justifyContent: "center", alignItems: "center" }}>

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { types } from "../../Contexts/globalReducer";
 import style from "./admin.module.css";
 
 import MenuLateralAdmin from "../admin/adminComponents/menuLateralAdmin/menuLateralAdmin";
@@ -8,9 +9,14 @@ import { GlobalContext } from "../../Contexts/global";
 import Lines from "../../components/Graphics/Lines";
 import NavigationAdmin from "../admin/adminComponents/navigationAdmin/navegationAdmin";
 
+
 function Admin() {
   const [state, dispatch] = useContext(GlobalContext);
-  const { profiles, columns } = state;
+  const { profiles, columns,paginaActual } = state;
+  
+  useEffect(() => {
+    dispatch({ type:types.paginaActual, payload:"admin"})
+  },[])
 
   return (
     <>
