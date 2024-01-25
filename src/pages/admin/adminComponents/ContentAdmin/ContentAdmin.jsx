@@ -53,7 +53,7 @@ function Content() {
   function handleDragStart(event) {
     const { active, over } = event;
     setActiveId(true);
-    //  logica para quitar select de perfil al dar clic o agregar select se puedo modularizar y seapra en untils sic rece
+    //  logica para quitar select de perfil al dar clic o agregar select se puedo modularizar y seapra en utils sic rece
     if (clickAcativate === false || active.id !== state.profileSelect.id) {
       addSelectedProfileToGlobalState(profiles, active.id, dispatch, types);
       setclickAcativate(true);

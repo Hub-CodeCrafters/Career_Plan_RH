@@ -11,10 +11,6 @@ const SelectedRouteItems = () => {
   const [state, dispatch] = useContext(GlobalContext);
 
   const { profiles, columns, routeSelect, profileSelect, rutaActual } = state;
-  console.log("ruta actual", rutaActual);
-  console.log("ruta select", routeSelect);
-  console.log("profile select",profileSelect)
-
   const prepareRouteItems = () => {
 
     if (routeSelect) {

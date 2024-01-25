@@ -1,7 +1,6 @@
 const addSelectedProfileToGlobalState= (profiles,profileId,dispatch,types) => {
 
     const selectedProfile = profiles.find((profile) => profile.id === profileId);
-    console.log(selectedProfile)
 
     if(selectedProfile){
         dispatch({

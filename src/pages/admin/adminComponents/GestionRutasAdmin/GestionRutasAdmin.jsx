@@ -54,25 +54,6 @@ function GestionRutasAdmin() {
       console.error("No se encontró el perfil en la matriz.");
     }
 
-    // const perfil = profiles.find((perfil) => perfil.id == idSelected);
-    // perfil.routes.push([]);
-    // var data = profiles.filter((profile) => profile.column === perfil.column);
-    // fetch('http://localhost:3000/profiles/' + perfil.column, {
-    //   mode: "cors",
-    //   method: 'PUT',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     id: perfil.column,
-    //     data: data
-    //   })
-    // }).then(response => response.json())
-    //   .then(newPerson => console.log(newPerson));
-    // var nuevoIndex = perfil.routes.length - 1;
-    // var nuevasRutas = perfil.routes;
-    // var rutaSeleccionada = perfil.routes[nuevoIndex]
-    // dispatch({ type: types.updateProfiles, payload: { profiles, nuevoIndex, nuevasRutas, rutaSeleccionada } });
   };
 
   return (

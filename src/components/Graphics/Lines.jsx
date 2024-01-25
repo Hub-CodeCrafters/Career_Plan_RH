@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 
+
 function Lines({idSelected,rutaSeleccionada, currentProfiles}) {
+
     var [page, setPage] = useState(currentProfiles)
+
     useEffect(() => { setPage(currentProfiles)}, [currentProfiles] )
     var seleccionado;
     const perfiles = [];

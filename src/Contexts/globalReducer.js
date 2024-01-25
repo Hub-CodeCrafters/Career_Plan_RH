@@ -1,6 +1,7 @@
 const types = {
     profileSelect: 'profileSelect',
     changeRutaActual: 'change ruta Actual',
+    resetState: 'reset state',
     allProfiles: 'all profiles',
     allColumns: 'all columns',
     updateRutaSelect: 'update ruta select',
@@ -12,7 +13,7 @@ const initialState = {
     columns: [],
     profileSelect: null,
     routeSelect: [],
-    rutaActual:null,
+    rutaActual: null,
     paginaActual: null,
 }
 
@@ -27,18 +28,18 @@ const GlobalReducer = (state, action) => {
 
         case types.allProfiles:
 
-        return {
-            // investiagr por que  se hace una copia de una rray al estado y no se hace directamente
-            ...state,
-            profiles: action.payload
-        }
+            return {
+                // investiagr por que  se hace una copia de una rray al estado y no se hace directamente
+                ...state,
+                profiles: action.payload
+            }
         case types.allColumns:
-            
-        return {
-               // investiagr por que  se hace una copia de una rray al estado y no se hace directamente
-            ...state,
-            columns: action.payload
-        }
+
+            return {
+                // investiagr por que  se hace una copia de una rray al estado y no se hace directamente
+                ...state,
+                columns: action.payload
+            }
 
         case types.profileSelect:
             return {
@@ -47,18 +48,28 @@ const GlobalReducer = (state, action) => {
                 rutaActual: state.rutaActual ?? 0,
                 routeSelect: action.payload.routes[state.rutaActual ?? 0],
             }
-        case types.updateRutaSelect:   
+        case types.updateRutaSelect:
             return {
                 ...state,
-                routeSelect: action.payload,   
+                routeSelect: action.payload,
+
             }
-    
+
         case types.changeRutaActual:
+
             return {
                 ...state,
                 rutaActual: action.payload,
 
             }
+        case types.resetState:
+
+            return {
+                ...state,
+                profileSelect: null,
+                rutaActual:null,
+            }
+
         default:
             return state
     }
