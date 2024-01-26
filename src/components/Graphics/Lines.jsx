@@ -1,25 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 
+import { GlobalContext } from "../../Contexts/global";
+import { types } from "../../Contexts/globalReducer";
 
-function Lines({idSelected,rutaSeleccionada, currentProfiles}) {
+// componente no modularizado s epuede revisar y optimizar
+// componete encargado de coger la ruta selecionada y mostrar la line de la ruta  
 
-    var [page, setPage] = useState(currentProfiles)
+function Lines() {
 
-    useEffect(() => { setPage(currentProfiles)}, [currentProfiles] )
+    const[state,dispatch] = useContext(GlobalContext)
+
+    const{profileSelect,routeSelect,profiles}=state
+
+    var [page, setPage] = useState(profiles)
+
+    useEffect(() => { setPage(profiles)}, [profiles,routeSelect] )
+    console.log("ejecutando el line")
     var seleccionado;
     const perfiles = [];
     const lines = [];
     var object;
-    if(rutaSeleccionada){
-        rutaSeleccionada.forEach(element => {
+   
+    if(routeSelect){
+        routeSelect.forEach(element => {
             object = document.getElementById('perfil-' + element);
             if(object){
                 perfiles.push(document.getElementById('perfil-' + element));
             }
         });
+
+        console.log("perfiles encontrados",perfiles)
     
-        if (idSelected > 0) {
-            seleccionado = document.getElementById('perfil-' + idSelected);
+        if (profileSelect.id > 0) {
+            seleccionado = document.getElementById('perfil-' + profileSelect.id);
         }
         
         for (let i = 0; i < perfiles.length; i++) {
@@ -76,7 +89,8 @@ function Lines({idSelected,rutaSeleccionada, currentProfiles}) {
         }
     }
     
-    return (<div style={{ backgroundColor: 'rgba(0,0,0,0)', width: "100vw", height: "100vh", position: "absolute", pointerEvents: 'none' }} tabIndex={-1}>
+    return (
+    <div style={{ zIndex:"10000", backgroundColor: 'rgba(0,0,0,0)', width: "100vw", height: "100vh", position: "absolute", pointerEvents: 'none' }} tabIndex={-1}>
         {lines && lines.map((line, index) => (
             <div id='line' key={"line" + index} style={line}></div>
         ))}

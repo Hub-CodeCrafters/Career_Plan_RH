@@ -29,3 +29,20 @@
 .prueba{
     position: absolute;
 }
+
+
+/* estilosd ela linea */
+
+.activate{
+    background-color: yellow;
+    opacity: 1 !important;
+
+}
+.activate-r{
+    background-color: aqua;
+}
+
+
+.noActivate-r{
+    opacity: 0.2;
+}

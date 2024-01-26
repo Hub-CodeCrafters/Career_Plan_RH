@@ -12,7 +12,7 @@ import NavigationAdmin from "../admin/adminComponents/navigationAdmin/navegation
 
 function Admin() {
   const [state, dispatch] = useContext(GlobalContext);
-  const { profiles, columns,paginaActual } = state;
+  const { profiles, columns,paginaActual,profileSelect} = state;
   
   useEffect(() => {
     dispatch({ type:types.paginaActual, payload:"admin"})
@@ -22,14 +22,15 @@ function Admin() {
     <>
       {profiles && (
         <section className={style.section}>
-          {/* <Lines rutaSeleccionada={rutaSeleccionada} idSelected={idSelected} profiles={profiles}/> */}
           <div className={style.config}>
+            {profileSelect && <Lines />}
             <MenuLateralAdmin perfiles={profiles} columns={columns} />
           </div>
 
           <div className={style.content}>
             <NavigationAdmin />
             <ContentAdmin />
+        
           </div>
         </section>
       )}
