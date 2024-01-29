@@ -30,7 +30,9 @@ export default function MenuRutas() {
 
   return (
     <div className={style.menuRutas}>
-      <h3 className={style.menuRutasName}>Rutas del Perfil</h3>
+      {profileSelect &&(
+        <h3 className={style.menuRutasName}>Rutas del Perfil</h3>
+      )} 
       {profileSelect && (
         <div className={style.menuRutasContent}>
           <button className={style.back}  onClick={() => changeRuta(-1)}>

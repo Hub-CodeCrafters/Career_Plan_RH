@@ -3,7 +3,7 @@ import { useEffect, useState,useContext } from "react";
 import { GlobalContext } from "../../Contexts/global";
 import { types } from "../../Contexts/globalReducer";
 
-// componente no modularizado s epuede revisar y optimizar
+// componente no modularizado se puede revisar y optimizar
 // componete encargado de coger la ruta selecionada y mostrar la line de la ruta  
 
 function Lines() {
@@ -15,7 +15,7 @@ function Lines() {
     var [page, setPage] = useState(profiles)
 
     useEffect(() => { setPage(profiles)}, [profiles,routeSelect] )
-    console.log("ejecutando el line")
+ 
     var seleccionado;
     const perfiles = [];
     const lines = [];
@@ -29,7 +29,7 @@ function Lines() {
             }
         });
 
-        console.log("perfiles encontrados",perfiles)
+    
     
         if (profileSelect.id > 0) {
             seleccionado = document.getElementById('perfil-' + profileSelect.id);
@@ -83,14 +83,14 @@ function Lines() {
                 left: posax - displacement + (width/2) +  "px",
                 position: "absolute",
                 backgroundColor: "green",
-                height: "10px"
+                height: "8px"
             }
             lines.push(style)
         }
     }
     
     return (
-    <div style={{ zIndex:"10000", backgroundColor: 'rgba(0,0,0,0)', width: "100vw", height: "100vh", position: "absolute", pointerEvents: 'none' }} tabIndex={-1}>
+    <div style={{ backgroundColor: 'rgba(0,0,0,0)', width: "100vw", height: "100vh", position: "absolute", pointerEvents: 'none' }} tabIndex={-1}>
         {lines && lines.map((line, index) => (
             <div id='line' key={"line" + index} style={line}></div>
         ))}

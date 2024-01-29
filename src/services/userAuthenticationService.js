@@ -21,7 +21,6 @@ const userAuthenticationService = (email, password) => {
             throw new Error("La solicitud fue abortada")
           
         } else {
-            console.error("Error de red:", err)
             throw new Error("Error de red, por favor inténtalo de nuevo más tarde")
         }
     })

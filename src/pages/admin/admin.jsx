@@ -16,6 +16,7 @@ function Admin() {
   
   useEffect(() => {
     dispatch({ type:types.paginaActual, payload:"admin"})
+    dispatch({ type: types.resetProfileSelect, payload: null });
   },[])
 
   return (

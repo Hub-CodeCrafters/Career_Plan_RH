@@ -1,7 +1,7 @@
 const types = {
     profileSelect: 'profileSelect',
     changeRutaActual: 'change ruta Actual',
-    resetState: 'reset state',
+    resetProfileSelect: 'reset profile select',
     allProfiles: 'all profiles',
     allColumns: 'all columns',
     updateRutaSelect: 'update ruta select',
@@ -62,7 +62,7 @@ const GlobalReducer = (state, action) => {
                 rutaActual: action.payload,
 
             }
-        case types.resetState:
+        case types.resetProfileSelect:
 
             return {
                 ...state,

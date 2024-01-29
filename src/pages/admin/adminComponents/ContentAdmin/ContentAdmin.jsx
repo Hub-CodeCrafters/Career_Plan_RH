@@ -59,7 +59,7 @@ function Content() {
       setclickAcativate(true);
     }
     if (clickAcativate === true && active.id === state.profileSelect.id) {
-      dispatch({ type: types.resetState, payload: null });
+      dispatch({ type: types.resetProfileSelect, payload: null });
       setclickAcativate(false);
     }
   }

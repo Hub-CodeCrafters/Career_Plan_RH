@@ -6,7 +6,7 @@ import MenuRutas from "../../../../components/MenuRutas/MenuRutas";
 import style from "./menuLateralUser.module.css"
 
 
-const MenuLateralUser = ({ perfiles, columns }) => {
+const MenuLateralUser = () => {
     const navigate = useNavigate();
 
     const redirectToAdmin = () => {
@@ -27,7 +27,6 @@ const MenuLateralUser = ({ perfiles, columns }) => {
 
         </div>
             <MenuRutas/>
-    
         </>
                 
     );

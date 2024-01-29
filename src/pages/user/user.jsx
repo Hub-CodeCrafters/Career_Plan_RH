@@ -14,18 +14,19 @@ import ContentUser from './userComponents/contentUser/ContentUser';
 function User() {
 
   const [state, dispatch] = useContext(GlobalContext);
-  const {profiles,columns} = state;
+  const {profiles,profileSelect} = state;
   
   useEffect(() => {
     dispatch({ type:types.paginaActual, payload:"user"})
+    dispatch({ type: types.resetProfileSelect, payload: null });
   },[])
 
   return (
     <>
       {profiles && (<section className={style.section}>
-        {/* <Lines rutaSeleccionada={rutaSeleccionada} idSelected={idSelected} profiles={profiles}/> */}
         <div className={style.config} >
-          <MenuLateralUser perfiles={profiles} columns={columns} />
+          {profileSelect && <Lines />}
+          <MenuLateralUser />
         </div>
         <div className={style.content}>
           <ContentUser/>

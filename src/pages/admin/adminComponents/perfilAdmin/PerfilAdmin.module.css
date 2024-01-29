@@ -18,7 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1px;
+    padding: 3px;
 }
 
 .botton{
@@ -26,17 +26,16 @@
     border-radius:5px;
     border: 1px solid transparent;
 }
-.prueba{
+/* .prueba{
     position: absolute;
-}
+} */
 
 
-/* estilosd ela linea */
+/* estilos de la linea */
 
 .activate{
     background-color: yellow;
     opacity: 1 !important;
-
 }
 .activate-r{
     background-color: aqua;
@@ -44,5 +43,6 @@
 
 
 .noActivate-r{
-    opacity: 0.2;
+    opacity: 0.2 ;
 }
+

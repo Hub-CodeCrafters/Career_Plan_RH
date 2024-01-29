@@ -36,14 +36,14 @@ function PerfilAdmin({ profile }) {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    zIndex: 199,
-    opacity: isDragging ? 0.5 : 1,
+    zIndex: 99,
+    // opacity: isDragging ? 0.5 : 1,
     boxShadow: isDragging ? "0px 0px 10px 5px rgba(0,0,0,0.5)" : ""
   };
 
   return (
     <>
-    {profileSelect?(
+    {profileSelect ? (
       <div
       id={"perfil-" + profile.id}
       style={style}
@@ -61,9 +61,7 @@ function PerfilAdmin({ profile }) {
       <div
       id={"perfil-" + profile.id}
       style={style}
-      className={`${Style.perfil} ${
-        profileSelect === profile.id ? Style.activate : ''
-     } ${routeSelect?.includes(profile.id) ? Style['noActivate-r'] :''}`}
+      className={`${Style.perfil}`}
       ref={setNodeRef}
       {...attributes}
       {...listeners}
