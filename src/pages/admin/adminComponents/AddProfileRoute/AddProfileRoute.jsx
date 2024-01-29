@@ -12,35 +12,39 @@ const AddProfileRoute = () => {
 
   const [isNewProfileInRoute, setNewProfileInRoute] = useState(false);
 
-  const [profilesInColumn, setProfilesInColumn] = useState(
-    profiles?.filter((profile) => profile.column == 1)
-  );
+  const [profilesInColumn, setProfilesInColumn] = useState( profiles?.filter((profile) => profile.column == 1));
 
   const [valores, setValores] = useState({
     nivel: profilesInColumn[0]?.column,
     perfil: profilesInColumn[0]
   });
-
+   console.log("valores nivel",valores.nivel)
   const addProfilesFromColumn= (Idcolumn) => {
+
     const profilesOptions = profiles?.filter((profile) => profile.column == Idcolumn);
     setProfilesInColumn(profilesOptions);
+
     setValores({
-        nivel: Number(Idcolumn),
+        nivel: profilesOptions[0]?.column,
         perfil: profilesOptions[0]
       });
+
   };
 
   const handleSave = () => {
     const copyRouteSelect = [...routeSelect]; 
     copyRouteSelect.push(valores.perfil.id);
     dispatch({ type: types.updateRutaSelect, payload: copyRouteSelect });
-
     const index = profiles.findIndex((profile) => profile.id === profileSelect.id);
     if (index !== -1) {
         profiles[index].routes[rutaActual] = copyRouteSelect;
         updateAllProfiles(profiles,getToken());
     }
+  
+    setProfilesInColumn(profiles?.filter((profile) => profile.column == 1));
     setNewProfileInRoute(false);
+   
+
 };
 
 

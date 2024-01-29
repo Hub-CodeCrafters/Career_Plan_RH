@@ -21,9 +21,9 @@ const DeleteColumnProfile = () => {
 
         const index = updatedProfiles.findIndex((profile) => profile.id === profileSelect.id);
         updatedProfiles.splice(index, 1);     
-
         dispatch({ type: types.allProfiles, payload: updatedProfiles });
-        dispatch({ type: types.resetState, payload: null });
+        dispatch({ type: types.resetProfileSelect, payload: null }) 
+
         updateAllProfiles(updatedProfiles,getToken());
     }
     return (
