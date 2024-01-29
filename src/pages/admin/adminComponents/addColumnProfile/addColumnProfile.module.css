@@ -72,8 +72,9 @@
 
 .button{
     border-radius: 5px;
-    background-color:#007bff;
-    color: white;
+    background-color: #808080;
+    color: black;
+    font-weight: bold;
     padding:10px;
     width: 7rem;
     height: 2rem;
@@ -83,4 +84,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
+}
+.button:hover{
+    background-color: #4CAF50;
+    transition: background-color 0.5s ease;
 }

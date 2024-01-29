@@ -34,11 +34,11 @@
 /* estilos de la linea */
 
 .activate{
-    background-color: yellow;
+    background-color: #4CAF50;
     opacity: 1 !important;
 }
 .activate-r{
-    background-color: aqua;
+    background-color: #CAE8FF;
 }
 
 

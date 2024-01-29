@@ -30,8 +30,13 @@
     padding: 1px 7px;
     color: black;
     transition: background-color 0.3s, color 0.3s;
+    border: none;
+    font-weight: bold;
 }
-
+.buttonRojo:hover{
+    background-color: rgba(255, 0, 0, 0.8) !important;
+    transition: background-color 0.5s ease;
+}
 .panel{
     color: #ADD8E6;
     font-size: large;
@@ -39,5 +44,5 @@
 }
 .navigateButton:hover{
    background-color:#4CAF50 ;
-   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+   transition: background-color 0.5s ease;
 }

@@ -8,13 +8,17 @@
     height: 30px;
     border: none;
     border-radius: 5px;
-    color: white;
+    color: black;
     font-size: 12px;
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: #1E90FF;
+    background-color: #808080;
+}
+.AddProfileRouteButton:hover{
+    background-color: #4CAF50;
+    transition: background-color 0.5s ease;
 }
 .contentNivelPerfil{
     width: 98%;

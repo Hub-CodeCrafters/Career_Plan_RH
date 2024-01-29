@@ -18,7 +18,7 @@ const NavegationAdmin = () => {
     <section className={style.navigation}>
       <div className={style.navigate}>
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <button onClick={handleCloseSesion} className={`${style.navigateButton} ${style.botonrojo}`}>Cerrar Sesión</button>
+          <button onClick={handleCloseSesion} className={`${style.navigateButton} ${style.buttonRojo}`}>Cerrar Sesión</button>
         </Link>
         <Link to="/" style={{ textDecoration: 'none' }}>
           <button  className={style.navigateButton}>Vista de Usuario</button>
