@@ -19,6 +19,7 @@ function User() {
   useEffect(() => {
     dispatch({ type:types.paginaActual, payload:"user"})
     dispatch({ type: types.resetProfileSelect, payload: null });
+    dispatch({ type: types.buttomActual, payload: null });
   },[])
 
   return (
