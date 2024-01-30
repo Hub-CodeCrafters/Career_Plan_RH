@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../../Contexts/global";
 import { types } from "../../Contexts/globalReducer";
 import style from "./admin.module.css";
 
-import MenuLateralAdmin from "../admin/adminComponents/menuLateralAdmin/menuLateralAdmin";
+// componetes Generales
+import MenuLateral from "../../components/menuLateral/menuLateral";
 import ContentAdmin from "./adminComponents/ContentAdmin/ContentAdmin";
-
-import { GlobalContext } from "../../Contexts/global";
 import Lines from "../../components/Graphics/Lines";
+
+// componetes Admin
 import NavigationAdmin from "../admin/adminComponents/navigationAdmin/navegationAdmin";
 
 
@@ -25,13 +27,12 @@ function Admin() {
         <section className={style.section}>
           <div className={style.config}>
             {profileSelect && <Lines />}
-            <MenuLateralAdmin perfiles={profiles} columns={columns} />
+            <MenuLateral />
           </div>
 
           <div className={style.content}>
             <NavigationAdmin />
             <ContentAdmin />
-        
           </div>
         </section>
       )}

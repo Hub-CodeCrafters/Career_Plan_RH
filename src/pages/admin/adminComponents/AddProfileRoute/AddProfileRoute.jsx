@@ -18,7 +18,6 @@ const AddProfileRoute = () => {
     nivel: profilesInColumn[0]?.column,
     perfil: profilesInColumn[0]
   });
-   console.log("valores nivel",valores.nivel)
   const addProfilesFromColumn= (Idcolumn) => {
 
     const profilesOptions = profiles?.filter((profile) => profile.column == Idcolumn);

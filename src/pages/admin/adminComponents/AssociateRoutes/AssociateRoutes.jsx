@@ -10,8 +10,6 @@ const AssociateRoutes = () => {
 
     return (
     <section className={style.Section}>
-      <hr></hr>
-      <MenuRutas />
       <SelectedRouteItems />
       <hr></hr>
       <AddProfileRoute/>

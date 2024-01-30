@@ -5,7 +5,8 @@ const types = {
     allProfiles: 'all profiles',
     allColumns: 'all columns',
     updateRutaSelect: 'update ruta select',
-    paginaActual: 'pagina actual'
+    paginaActual: 'pagina actual',
+    buttomActual: 'buttom actual'
 }
 
 const initialState = {
@@ -15,11 +16,17 @@ const initialState = {
     routeSelect: [],
     rutaActual: null,
     paginaActual: null,
+    buttomActual: null,
 }
 
 const GlobalReducer = (state, action) => {
 
     switch (action.type) {
+        case types.buttomActual:
+            return {
+                ...state,
+                buttomActual: action.payload
+            }
         case types.paginaActual:
             return {
                 ...state,

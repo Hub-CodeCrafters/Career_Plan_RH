@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import style from "../admin/admin.module.css"
-
-
-// data
-
 import { GlobalContext } from "../../Contexts/global";
-import Lines from '../../components/Graphics/Lines';
 import { types } from '../../Contexts/globalReducer';
 
-import MenuLateralUser from './userComponents/menuLateralUser/menuLateralUser'
+
+// componetes generales
+import Lines from '../../components/Graphics/Lines';
+import MenuLateral from '../../components/menuLateral/menuLateral';
+
+// componetes user
 import ContentUser from './userComponents/contentUser/ContentUser';
 
 function User() {
@@ -26,7 +26,7 @@ function User() {
       {profiles && (<section className={style.section}>
         <div className={style.config} >
           {profileSelect && <Lines />}
-          <MenuLateralUser />
+          <MenuLateral />
         </div>
         <div className={style.content}>
           <ContentUser/>
