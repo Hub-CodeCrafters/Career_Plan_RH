@@ -18,11 +18,11 @@ import { AdminLoginRedirectButton } from "../../pages/user/userComponents/AdminL
 const MenuLateral = ({ perfiles, columns }) => {
   const [state, dispatch] = useContext(GlobalContext);
   const { profileSelect, buttomActual, paginaActual } = state;
-  
+
   useEffect(() => {
     if (profileSelect === null)
       dispatch({ type: types.buttomActual, payload: null });
-  });
+  },[profileSelect]);
 
   const handleClick = (componentName) => {
     dispatch({ type: types.buttomActual, payload: componentName });
