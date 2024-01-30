@@ -56,15 +56,19 @@
 }
 
 .Guardar{
-    width: 60%;
-    height: 30px;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
     margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: #1E90FF;
+    background-color: #808080;
+    box-shadow: 0px 0px 5px 0px rgba(234, 222, 222, 0.75);
+    color: black;
+    padding: 6px;
+    width: 60%;
+    margin-bottom: 2vh;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+.Guardar:hover{
+    background-color: #4CAF50;
+    transition: background-color 0.5s ease;
 }

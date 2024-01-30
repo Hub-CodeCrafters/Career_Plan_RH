@@ -11,13 +11,21 @@ function PerfilUser({ profile }) {
   const handleOnClick = () => {
     const copyProfiles = [...profiles];
     const profilefind = copyProfiles.find((p) => p.id === profile.id);
-    dispatch({ type: types.profileSelect, payload: profilefind });
-    setActivate(!activate);
-  
-    if (activate === true) {
-      dispatch({ type: types.resetProfileSelect, payload: null });
-      setActivate(!activate);
+
+    if (profileSelect) {
+      if (profileSelect.id !== profile.id  ) {
+        dispatch({ type: types.profileSelect, payload: profilefind });
+        setActivate(true);
+      }
+      if(profileSelect.id ===profile.id){
+        dispatch({ type: types.resetProfileSelect, payload: null });
+        setActivate(false);
+      }
+    }else{
+      dispatch({ type: types.profileSelect, payload: profilefind });
+      setActivate(true);
     }
+  
   };
   
 

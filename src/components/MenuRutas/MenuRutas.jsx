@@ -10,13 +10,11 @@ import { getUserRole } from "../../utils/generalUtils/getUserRole";
 // componetens admin
 import { GestionRutasAdmin } from "../../pages/admin/adminComponents/GestionRutasAdmin/GestionRutasAdmin";
 
-
-
 export default function MenuRutas() {
   const [state, dispatch] = useContext(GlobalContext);
 
   const { profileSelect, rutaActual, paginaActual, buttomActual } = state;
-
+console.log(profileSelect)
   var [page, setPage] = useState();
 
   useEffect(() => {
@@ -37,7 +35,7 @@ export default function MenuRutas() {
 
   return (
     <div className={style.menuRutas}>
-      <hr className={style.hr} ></hr>
+      <hr className={style.hr}></hr>
       {profileSelect && (
         <h3 className={style.menuRutasName}>Rutas del Perfil</h3>
       )}
@@ -54,9 +52,8 @@ export default function MenuRutas() {
           </button>
         </div>
       )}
-      {paginaActual === "admin" && buttomActual === "Rutas" && (
-        <GestionRutasAdmin />
-      )}
+      {paginaActual === "admin" &&
+        buttomActual === "Rutas" && <GestionRutasAdmin />}
       <hr className={style.hr}></hr>
     </div>
   );

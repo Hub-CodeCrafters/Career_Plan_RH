@@ -10,6 +10,7 @@ width: 100%;
     gap: 1rem;
     border-radius: 5px;
     overflow: hidden;
+    
 
 }
 
@@ -23,23 +24,25 @@ width: 100%;
 }
 
 .study{
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: aqua;
+    margin: auto;
 
 }
 
 .studyRequiremen{ 
-    width: 90%;
+    width: 100%;
     height: auto;
     margin-block-start: 0;
     margin-block-end: 0;
     background-color: #ADD8E6;
- 
-   
+    font-size: small;
 }
 .color{
     background-color: white !important;

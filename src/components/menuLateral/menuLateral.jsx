@@ -37,37 +37,38 @@ const MenuLateral = ({ perfiles, columns }) => {
           <MenuRutas />
           {buttomActual === null && (
             <div className={style.informationProfile}>
+              <h3 className={style.requisitos}>Requisitos Del Perfil</h3>
               {paginaActual === "admin" && 
                <button
                className={style.informationButtom}
                onClick={() => handleClick("Rutas")}
              >
-               Rutas del perfil
+               Editas Rutas 
              </button>
               }
               <button
                 className={style.informationButtom}
                 onClick={() => handleClick("Estudios")}
               >
-                Estudios
+                {paginaActual==="admin"?"Editar Estudios":" Ver Estudios"}
               </button>
               <button
                 className={style.informationButtom}
                 onClick={() => handleClick("Experiencias")}
               >
-                Experiencias
+                {paginaActual==="admin"?"Editar Experiencias":" Ver Experiencias"}
               </button>
               <button
                 className={style.informationButtom}
                 onClick={() => handleClick("Habilidades")}
               >
-                Habilidades
+                {paginaActual==="admin"?"Editar Habilidades":" Ver Habilidades"}
               </button>
               <button
                 className={style.informationButtom}
                 onClick={() => handleClick("Competencias")}
               >
-                Competencias
+                {paginaActual==="admin"?"Editar Competencias":" Ver Competencias"}
               </button>
             </div>
           )}
