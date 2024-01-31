@@ -34,7 +34,7 @@ const MenuLateral = ({ perfiles, columns }) => {
 
   return (
     <div className={style.menuLateralPrincipal}>
-      {paginaActual === "user" && <AdminLoginRedirectButton />}
+      {/* {paginaActual === "user" && <AdminLoginRedirectButton />} */}
       {profileSelect === null && paginaActual === "admin" && (
         <AddColumnProfile />
       )}
