@@ -1,27 +1,6 @@
-// const deleteProfile = (id) => {
-//   return fetch(`https://geoapps.esri.co/PDCJsonServer/profiles/${id}`, {
-//     mode: "cors",
-//     method: 'DELETE',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   })
-//   .then(response => {
-//     if (!response.ok) {
-//       throw new Error('Error deleting profile');
-//     }
-//   })
-//   .catch(error => {
-//     console.error('Error deleting profile:', error);
-//     throw error;
-//   });
-// };
-  
-
-
   const updateProfilesColumn = (column, data,token) => {
 
-    return fetch(`https://geoapps.esri.co/PDCJsonServer/profiles/${column}`, {
+    return fetch(`http://localhost:3000/profiles/${column}`, {
       mode: "cors",
       method: 'PUT',
       headers: {
@@ -46,7 +25,7 @@
   };
   
   const updateAllProfiles = (profiles, token) => {
-    return fetch(`https://geoapps.esri.co/PDCJsonServer/profiles`, {
+    return fetch(`http://localhost:3000/profiles`, {
       mode: "cors",
       method: 'PUT',
       headers: {
@@ -70,7 +49,7 @@
   
 
   const getAllProfiles = () => { 
-    return fetch('https://geoapps.esri.co/PDCJsonServer/profiles', {
+    return fetch('http://localhost:3000/profiles', {
         mode: "cors",
         method: 'GET',
         headers: {
@@ -92,7 +71,7 @@
 
   const addProfile = (data) => {
 
-    fetch('https://geoapps.esri.co/PDCJsonServer/profiles', {
+    fetch('http://localhost:3000/profiles', {
       mode: "cors",
       method: 'POST',
       headers: {

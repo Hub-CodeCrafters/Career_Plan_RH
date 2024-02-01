@@ -2,7 +2,7 @@
 
 const getAllColumns = () => {
 
-    return fetch('https://geoapps.esri.co/PDCJsonServer/columns', {
+    return fetch('http://localhost:3000/columns', {
       mode: "cors",
       method: 'GET',
       headers: {
