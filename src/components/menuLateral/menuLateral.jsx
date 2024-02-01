@@ -95,7 +95,7 @@ const MenuLateral = ({ perfiles, columns }) => {
       {buttomActual !== null && profileSelect && (
         <div className={style.informationBack}>
           <button onClick={handleBack} className={style.informationButtomBack}>
-            <img src="src\assets\icons\volver.png" alt="" />
+            <img src="./assets/icons/volver.png" alt="" />
           </button>
         </div>
       )}
