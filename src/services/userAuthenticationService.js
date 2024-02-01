@@ -1,5 +1,5 @@
 const userAuthenticationService = (email, password) => {
-    return fetch("http://localhost:3000/auth", {
+    return fetch("https://geoapps.esri.co/PDCJsonServer/auth", {
         mode: "cors",
         method: "POST",
         headers: {
