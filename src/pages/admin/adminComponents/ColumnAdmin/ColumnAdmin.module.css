@@ -1,0 +1,88 @@
+/* estilos de la coluna */
+.containColumns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #cccccc;
+    overflow: hidden;
+}
+
+/* esto deveria de hacer con javascript o un componete para no repetir tanto codigo  */
+.containColumns:nth-child(1) {
+    height: 54%;
+}
+
+.containColumns:nth-child(2) {
+    height: 60%;
+}
+
+.containColumns:nth-child(3) {
+    height: 64%;
+
+}
+
+.containColumns:nth-child(4) {
+    height: 70%;
+
+}
+
+.containColumns:nth-child(5) {
+    height: 77%;
+
+}
+
+.containColumns:nth-child(6) {
+    height: 91%;
+
+}
+
+.containColumns:nth-child(7) {
+    height: 92%;
+
+}
+
+.containColumns:nth-child(8) {
+    height: 93%;
+
+}
+
+.containColumns:nth-child(9) {
+    height: 94%;
+
+}
+
+.containColumns:nth-child(10) {
+    height: 96%;
+
+}
+
+.containColumns:nth-child(11) {
+    height: 97%;
+
+}
+
+.containColumns:nth-child(12) {
+    height: 100%;
+
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 95%;
+    height: auto;
+    margin-top: 7px
+}
+
+.idColumn {
+    width: 98%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    font-weight: bold;
+}

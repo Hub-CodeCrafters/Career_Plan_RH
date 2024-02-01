@@ -1,0 +1,21 @@
+.studyDelete{
+    margin: auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    background-color: #808080;
+    cursor: pointer;
+    border: none;
+    padding-block: 0px;
+    padding-inline: 0px;
+    box-sizing: none;
+    font-weight: bold;
+}
+.studyDelete:hover{
+    background-color: rgba(255, 0, 0, 0.8);
+    transition: background-color 0.5s ease;
+}

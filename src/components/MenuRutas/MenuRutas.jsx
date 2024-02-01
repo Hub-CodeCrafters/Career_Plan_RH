@@ -1,83 +1,60 @@
-import { useState, useContext, useEffect } from 'react';
-import { GlobalContext } from '../../state/global';
-import { types } from '../../state/globalReducer';
-export default function MenuRutas({ ruta, profiles }) {
-  const [state, dispatch] = useContext(GlobalContext)
-  let { idSelected, rutas, perfil } = state
+import { useState, useContext, useEffect } from "react";
+import { GlobalContext } from "../../Contexts/global";
+import { types } from "../../Contexts/globalReducer";
+import style from "./MenuRutas.module.css";
 
-  var [page, setPage] = useState()
-  useEffect(() => { setPage(ruta) }, [ruta])
+// componentes globales
+import { getToken } from "../../utils/generalUtils/tokenUtils";
+import { getUserRole } from "../../utils/generalUtils/getUserRole";
+
+// componetens admin
+import { GestionRutasAdmin } from "../../pages/admin/adminComponents/GestionRutasAdmin/GestionRutasAdmin";
+
+export default function MenuRutas() {
+  const [state, dispatch] = useContext(GlobalContext);
+
+  const { profileSelect, rutaActual, paginaActual, buttomActual } = state;
+console.log(profileSelect)
+  var [page, setPage] = useState();
+
+  useEffect(() => {
+    setPage(rutaActual);
+  }, [rutaActual]);
+
   const changeRuta = (increment) => {
-    page += increment;
-    if (page === rutas.length) {
-      dispatch({ type: types.changeRutas, payload: 0 })
-    } else if (page === -1) {
-      dispatch({ type: types.changeRutas, payload: rutas.length - 1 });
-    } else {
-      dispatch({ type: types.changeRutas, payload: page });
+    const newPage = Math.max(0, page + increment);
+    if (newPage == 0 || newPage <= profileSelect.routes.length - 1) {
+      setPage(newPage);
+      dispatch({
+        type: types.updateRutaSelect,
+        payload: profileSelect.routes[newPage]
+      });
+      dispatch({ type: types.changeRutaActual, payload: newPage });
     }
-  }
-
-  const addRoute = () => {
-    const perfil = profiles.find((perfil) => perfil.id == idSelected);
-    perfil.routes.push([]);
-    var data = profiles.filter((profile) => profile.column === perfil.column);
-    fetch('http://localhost:3000/profiles/' + perfil.column, {
-      mode: "cors",
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: perfil.column,
-        data: data
-      })
-    }).then(response => response.json())
-      .then(newPerson => console.log(newPerson));
-    var nuevoIndex = perfil.routes.length - 1;
-    var nuevasRutas = perfil.routes;
-    var rutaSeleccionada = perfil.routes[nuevoIndex]
-    dispatch({ type: types.updateProfiles, payload: { profiles, nuevoIndex, nuevasRutas, rutaSeleccionada } });
-  }
-
-  const delRoute = () => {
-    const perfil = profiles.find((perfil) => perfil.id == idSelected);
-    perfil.routes.splice(page, 1);
-    var data = profiles.filter((profile) => profile.column === perfil.column);
-    fetch('http://localhost:3000/profiles/' + perfil.column, {
-      mode: "cors",
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: perfil.column,
-        data: data
-      })
-    }).then(response => response.json())
-      .then(newPerson => console.log(newPerson));
-    var ruta = perfil.routes[page - 1];
-    var indexRuta = page - 1;
-    if (page === 0) {
-      ruta = perfil.routes[page];
-      indexRuta = 0;
-    }
-    var eliminarRuta = true; 
-    dispatch({ type: types.updateProfiles, payload: { profiles, eliminarRuta, indexRuta, ruta } });
-  }
+  };
 
   return (
-    <div >
-      {idSelected != 0 && <center>
-        <h1 style={{ color: "white", margin: "5vh 0 " }}>{perfil}</h1>
-        <button className='botton' onClick={() => changeRuta(-1)}>&#60;</button>
-        <span style={{ color: "white", marginLeft: "7px", marginRight: "7px" }}>ruta {page + 1} de {rutas.length}</span>
-        <button className='botton' onClick={() => changeRuta(1)}>&#62;</button>
-        <br />
-        {rutas[0].length > 0 && <button className='botton' style={{ marginRight: "7px" }} onClick={addRoute}> &#43; </button>}
-        {rutas.length > 1 && <button className='botton' onClick={delRoute}> &#215; </button>}
-      </center>}
-
+    <div className={style.menuRutas}>
+      <hr className={style.hr}></hr>
+      {profileSelect && (
+        <h3 className={style.menuRutasName}>Rutas del Perfil</h3>
+      )}
+      {profileSelect && (
+        <div className={style.menuRutasContent}>
+          <button className={style.back} onClick={() => changeRuta(-1)}>
+            &#60;
+          </button>
+          <span className={style.menuRutaslength}>
+            Ruta {page + 1} de {profileSelect.routes.length}
+          </span>
+          <button className={style.next} onClick={() => changeRuta(1)}>
+            &#62;
+          </button>
+        </div>
+      )}
+      {paginaActual === "admin" &&
+        buttomActual === "Rutas" && <GestionRutasAdmin />}
+      <hr className={style.hr}></hr>
     </div>
-  )
+  );
 }

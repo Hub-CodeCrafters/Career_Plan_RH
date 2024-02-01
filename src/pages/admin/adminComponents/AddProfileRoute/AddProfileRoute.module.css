@@ -1,0 +1,74 @@
+.addProfileRoute{
+    width: 100%;
+    height: auto;  
+    background-color: aqua;
+}
+.AddProfileRouteButton{
+    width: 75%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #808080;
+}
+.AddProfileRouteButton:hover{
+    background-color: #4CAF50;
+    transition: background-color 0.5s ease;
+}
+.contentNivelPerfil{
+    width: 98%;
+    margin: auto;
+    height: auto;
+    display: flex;
+    gap: 5px;
+
+}
+.titleNivelPerfil{    
+    width: 100%;
+    color: #ADD8E6;
+    font-size:  1em;
+
+}
+
+.columns{
+    width:20%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: small;
+    box-shadow: 0px 0px 5px 0px rgba(234, 222, 222, 0.75);
+}
+.profilescolumns{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: small;
+    box-shadow: 0px 0px 5px 0px rgba(234, 222, 222, 0.75);
+}
+
+.Guardar{
+    margin-top: 10px;
+    background-color: #808080;
+    box-shadow: 0px 0px 5px 0px rgba(234, 222, 222, 0.75);
+    color: black;
+    padding: 6px;
+    width: 60%;
+    margin-bottom: 2vh;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+.Guardar:hover{
+    background-color: #4CAF50;
+    transition: background-color 0.5s ease;
+}

@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+
+}
+
+.section {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.config {
+    width: 15%;
+    height: 100vh;
+    background-color: #202020;
+}
+
+.content {
+    width: 100%;
+    height: 100vh;
+    background-color: aqua;
+}
+
+
+
+
+/* --------------------------- */
+/* esto es para el contextod e arastrar ver si se puede pasar o dejarlo aca */
+.moving {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    border-radius: 10px;
+    background-color: #CAE8FF;
+    font-size: 11px;
+}

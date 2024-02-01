@@ -1,0 +1,90 @@
+
+.menuLateralPrincipal{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+}
+
+
+.informationProfile{
+    margin-top: 1.5rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    gap: 1.5rem;
+
+}
+.requisitos{
+    color: #ADD8E6;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+
+
+.informationBack{
+    width: 95%;
+    height: 2em;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    position: absolute;
+    bottom: 0;
+}
+
+
+.informationButtomBack{
+    width: 20%;
+    height: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+    background-color: #808080;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    overflow: hidden;
+    
+   
+}
+.informationButtomBack:hover{
+    background-color: #4CAF50;
+    transition: background-color 0.5s ease;
+}
+
+
+
+
+.informationButtom{
+    width: 80%;
+    height: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+    background-color: #808080;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+ 
+}
+.informationButtom:hover{
+    background-color: #4CAF50;
+    transition: background-color 0.5s ease;
+}
+

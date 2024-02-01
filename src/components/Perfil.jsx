@@ -92,3 +92,4 @@ function Perfil({ perfil, column, display = true }) {
 }
 
 export default Perfil;
+

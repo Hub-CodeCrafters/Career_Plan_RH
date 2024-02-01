@@ -1,22 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 
-function Lines({idSelected,rutaSeleccionada, currentProfiles}) {
-    var [page, setPage] = useState(currentProfiles)
-    useEffect(() => { setPage(currentProfiles)}, [currentProfiles] )
+import { GlobalContext } from "../../Contexts/global";
+import { types } from "../../Contexts/globalReducer";
+
+// componente no modularizado se puede revisar y optimizar
+// componete encargado de coger la ruta selecionada y mostrar la line de la ruta  
+
+function Lines() {
+
+    const[state,dispatch] = useContext(GlobalContext)
+
+    const{profileSelect,routeSelect,profiles}=state
+
+    var [page, setPage] = useState(profiles)
+
+    useEffect(() => { setPage(profiles)}, [profiles,routeSelect] )
+ 
     var seleccionado;
     const perfiles = [];
     const lines = [];
     var object;
-    if(rutaSeleccionada){
-        rutaSeleccionada.forEach(element => {
+   
+    if(routeSelect){
+        routeSelect.forEach(element => {
             object = document.getElementById('perfil-' + element);
             if(object){
                 perfiles.push(document.getElementById('perfil-' + element));
             }
         });
+
     
-        if (idSelected > 0) {
-            seleccionado = document.getElementById('perfil-' + idSelected);
+    
+        if (profileSelect.id > 0) {
+            seleccionado = document.getElementById('perfil-' + profileSelect.id);
         }
         
         for (let i = 0; i < perfiles.length; i++) {
@@ -67,13 +83,14 @@ function Lines({idSelected,rutaSeleccionada, currentProfiles}) {
                 left: posax - displacement + (width/2) +  "px",
                 position: "absolute",
                 backgroundColor: "green",
-                height: "10px",
+                height: "8px"
             }
             lines.push(style)
         }
     }
     
-    return (<div style={{ backgroundColor: 'rgba(0,0,0,0)', width: "100vw", height: "100vh", position: "absolute", pointerEvents: 'none' }} tabIndex={-1}>
+    return (
+    <div style={{ backgroundColor: 'rgba(0,0,0,0)', width: "100vw", height: "100vh", position: "absolute", pointerEvents: 'none' }} tabIndex={-1}>
         {lines && lines.map((line, index) => (
             <div id='line' key={"line" + index} style={line}></div>
         ))}

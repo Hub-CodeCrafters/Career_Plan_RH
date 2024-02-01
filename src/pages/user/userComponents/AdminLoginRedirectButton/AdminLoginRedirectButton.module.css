@@ -1,0 +1,41 @@
+.login{
+    width: 100%;
+    height: 5%;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+.loginButton{
+    
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px ;
+    background-color: #808080 ;
+    box-shadow: 0px 0px 5px 0px rgba(234, 222, 222, 0.75);
+    cursor: pointer;
+    text-decoration: none;
+    padding: 1px 7px;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+   
+}
+
+.loginButton:hover{
+    background-color: #4CAF50;
+    transition: background-color 0.5s ease;
+}
+
+/* estilos apra el perfil selecionado de user */
+.perfil_h3{
+    color: #ADD8E6;
+    margin-block-start: 0.3em;
+    margin-block-end: 0.3em;
+}
+.perfil_h3_name{
+    color:white;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}

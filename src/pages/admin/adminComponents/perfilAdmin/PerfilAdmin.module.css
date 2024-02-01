@@ -1,0 +1,48 @@
+.perfil{
+    background-color: #CAE8FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    width: 95%;
+    border-radius: 5px ;
+    margin: 3px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+
+}
+.perfilName{
+    font-size: 0.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+}
+
+.botton{
+    background-color: #CAE8FF;
+    border-radius:5px;
+    border: 1px solid transparent;
+}
+/* .prueba{
+    position: absolute;
+} */
+
+
+/* estilos de la linea */
+
+.activate{
+    background-color: #4CAF50;
+    opacity: 1 !important;
+}
+.activate-r{
+    background-color: #CAE8FF;
+}
+
+
+.noActivate-r{
+    opacity: 0.2 ;
+}
+
